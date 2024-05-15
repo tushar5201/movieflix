@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from 'react'
-import Header from '../components/Header'
 import { Carousel } from 'react-bootstrap'
 // import data from '../data'
 import { Link } from 'react-router-dom'

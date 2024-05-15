@@ -2,7 +2,6 @@ import { Link, useParams } from "react-router-dom";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { useEffect, useReducer } from "react";
-import logger from "use-reducer-logger";
 import axios from "axios";
 import { getError } from "../utils";
 import { Accordion, AccordionHeader, AccordionItem, Col, Row } from "react-bootstrap";
@@ -28,7 +27,7 @@ export function SeriesScreen() {
 
     // const [season, setSeason] = useState();
 
-    const [{ loading, error, series }, dispatch] = useReducer(logger(reducer), {
+    const [{ loading, error, series }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
         series: []

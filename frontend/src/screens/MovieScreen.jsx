@@ -3,12 +3,10 @@ import Header from '../components/Header'
 // import data from '../data'
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
-import logger from 'use-reducer-logger';
 import { Col, Row } from 'react-bootstrap';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
-import { VideoScreen } from './VideoScreen';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -27,7 +25,7 @@ export default function MovieScreen() {
     const params = useParams();
     const { id } = params;
 
-    const [{ loading, error, movies }, dispatch] = useReducer(logger(reducer), {
+    const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
         movies: []

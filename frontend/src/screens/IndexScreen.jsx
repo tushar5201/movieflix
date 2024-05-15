@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import logger from 'use-reducer-logger';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
@@ -43,13 +42,13 @@ const reducer1 = (action, state) => {
 
 export default function IndexScreen() {
 
-    const [{ loading, error, movies }, dispatch] = useReducer(logger(reducer), {
+    const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
         movies: []
     })
 
-    const [{ loading1, error1, series }, dispatch1] = useReducer(logger(reducer1), {
+    const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
         series: [],
         loading: true,
         error: ''

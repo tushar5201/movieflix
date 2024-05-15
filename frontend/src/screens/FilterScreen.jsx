@@ -121,7 +121,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
-import logger from 'use-reducer-logger';
 import axios from 'axios';
 import { getError } from '../utils';
 import Slider from 'react-slick';
@@ -159,13 +158,13 @@ export default function FilterScreen() {
     const sp = new URLSearchParams(search);
     const category = sp.get('category') || 'all';
 
-    const [{ loading, error, movies }, dispatch] = useReducer(logger(reducer), {
+    const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
         movies: []
     })
 
-    const [{ series }, dispatch1] = useReducer(logger(reducer1), {
+    const [{ series }, dispatch1] = useReducer((reducer1), {
         series: [],
         loading: true,
         error: ''

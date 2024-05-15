@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { getError } from "../utils";
 import axios from "axios";
 import { useEffect, useReducer, useState } from "react";
-import logger from "use-reducer-logger";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -44,7 +43,7 @@ const reducer2 = (state, action) => {
 }
 
 export default function Header1() {
-    const [{ movies }, dispatch] = useReducer(logger(reducer), {
+    const [{ movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
         movies: []
