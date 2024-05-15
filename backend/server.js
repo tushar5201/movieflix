@@ -66,7 +66,7 @@ const upload = multer({ storage: storage });
 // });
 
 app.get('/', async (req, res) => {
-    res.json("Hello")
+    res.json("Hello");
 })
 
 app.get('/api/movies', async (req, res) => {
