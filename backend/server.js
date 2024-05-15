@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 app.use(cors(
     {
-        origin: ["https://movieflix-rho.vercel.app/"],
+        origin: ["https://movieflix-zzmw.vercel.app/"],
         methods: ["POST", "GET", "DELETE", "PUT"],
         ceadentials: "true"
     }
