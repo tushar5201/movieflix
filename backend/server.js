@@ -28,7 +28,7 @@ app.use(cors(
     {
         origin: ["https://movieflix-zzmw.vercel.app/"],
         methods: ["POST", "GET", "DELETE", "PUT"],
-        ceadentials: "true"
+        credentials: "true"
     }
 ))
 dotenv.config();
