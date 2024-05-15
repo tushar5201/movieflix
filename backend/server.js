@@ -15,7 +15,6 @@ import path from 'path'
 import { createMovie, deleteMovie, movieImageController, updateMovie } from "./controllers/movieController.js";
 import { createCategory, deleteCategory } from "./controllers/caetgoryController.js";
 import Category from "./models/categoryModel.js";
-import { GridFsStorage } from 'multer-gridfs-storage'
 import crypto from 'crypto'
 import { createSeries, seriesImageController } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
