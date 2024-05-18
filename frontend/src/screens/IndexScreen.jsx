@@ -127,7 +127,7 @@ export default function IndexScreen() {
                     {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                             movies.slice(0).reverse().map((movie) => (
-                                <Tilt defaultOptions>
+                                <Tilt options={defaultOptions}>
                                     <Link className='overlay1' key={movie._id} to={`/movie/${movie._id}`}>
                                         <img src={`/admin/get-movie-image/${movie._id}`} alt={movie.title} className='slider_img' />
                                         <div className='overlay'>{movie.name}<br />{movie.year}</div>
