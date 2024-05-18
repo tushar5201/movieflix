@@ -33,9 +33,9 @@ app.use(cors(
 ))
 dotenv.config();
 
-const url = process.env.MONGODB_URI;
+// const url = process.env.MONGODB_URI;
 
-mongoose.connect(url).then(() => {
+mongoose.connect("mongodb+srv://tusharlakadiya:tushar5201@cluster0.gf7ykjp.mongodb.net/movieflix?retryWrites=true&w=majority").then(() => {
     console.log('connected to db');
 }).catch(err => {
     console.log(err.message);
