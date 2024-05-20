@@ -143,7 +143,7 @@ export default function Header1() {
                                 })
                                 .map((movie) => (
                                     <Link to={`/movie/${movie._id}`} className='r_link'>
-                                        <img src={`/admin/get-movie-image/${movie._id}`} alt={movie._id} width={50} /> {' '}
+                                        <img src={`${path}/admin/get-movie-image/${movie._id}`} alt={movie._id} width={50} /> {' '}
                                         {movie.name}
                                     </Link>
                                 ))
@@ -157,7 +157,7 @@ export default function Header1() {
                                 })
                                 .map((ser) => (
                                     <Link to={`/series/${ser._id}`} className='r_link'>
-                                        <img src={`/admin/get-series-image/${ser._id}`} alt={ser._id} width={50} /> {' '}
+                                        <img src={`${path}/admin/get-series-image/${ser._id}`} alt={ser._id} width={50} /> {' '}
                                         {ser.name}
                                     </Link>
                                 ))
