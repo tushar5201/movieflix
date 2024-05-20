@@ -42,11 +42,11 @@ export default function IndexScreen() {
     const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
-        movies: []
+        movies: [1]
     })
 
     const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
-        series: [],
+        series: [1],
         loading: true,
         error: ''
     });
