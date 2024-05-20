@@ -51,13 +51,13 @@ export default function IndexScreen() {
         error: ''
     });
 
-    const path = "https://movieflix-lyart.vercel.app";
+    // const path = "https://movieflix-lyart.vercel.app";
 
     useEffect(() => {
         const fetchMovie = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`${path}/api/movies`);
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies`);
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -68,7 +68,7 @@ export default function IndexScreen() {
         const fetchSeries = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const series = await axios.get(`${path}/api/series`);
+                const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
                 dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAIL', payload: error.message })
@@ -114,7 +114,7 @@ export default function IndexScreen() {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                             movies.slice(0).reverse().map((movie) => (
                                 <Link className='overlay1' key={movie._id} to={`/movie/${movie._id}`}>
-                                    <img src={`${path}/admin/get-movie-image/${movie._id}`} alt={movie.title} className='slider_img' />
+                                    <img src={`https://movieflix-lyart.vercel.app/admin/get-movie-image/${movie._id}`} alt={movie.title} className='slider_img' />
                                     <div className='overlay'>{movie.name}<br />{movie.year}</div>
                                 </Link>
                             )))}
@@ -126,7 +126,7 @@ export default function IndexScreen() {
                         loading1 ? <LoadingBox /> : error1 ? <MessageBox variant='danger'>{error1}</MessageBox> : (
                             series.slice(0).reverse().map((ser) => (
                                 <Link key={ser._id} to={`/series/${ser._id}`}>
-                                    <img src={`${path}/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
+                                    <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
                                     <div className='overlay'>{ser.name}<br />{ser.year}</div>
                                 </Link>
                             )))

@@ -65,7 +65,7 @@ export default function Header1() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`${path}/api/movies`);
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies`);
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -76,7 +76,7 @@ export default function Header1() {
         const fetchCategories = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`${path}/api/categories`);
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/categories`);
                 dispatch1({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -87,7 +87,7 @@ export default function Header1() {
         const fetchSeries = async () => {
             dispatch2({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`${path}/api/series`);
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
                 dispatch2({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch2({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -143,7 +143,7 @@ export default function Header1() {
                                 })
                                 .map((movie) => (
                                     <Link to={`/movie/${movie._id}`} className='r_link'>
-                                        <img src={`${path}/admin/get-movie-image/${movie._id}`} alt={movie._id} width={50} /> {' '}
+                                        <img src={`https://movieflix-lyart.vercel.app/admin/get-movie-image/${movie._id}`} alt={movie._id} width={50} /> {' '}
                                         {movie.name}
                                     </Link>
                                 ))
@@ -157,7 +157,7 @@ export default function Header1() {
                                 })
                                 .map((ser) => (
                                     <Link to={`/series/${ser._id}`} className='r_link'>
-                                        <img src={`${path}/admin/get-series-image/${ser._id}`} alt={ser._id} width={50} /> {' '}
+                                        <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser._id} width={50} /> {' '}
                                         {ser.name}
                                     </Link>
                                 ))
