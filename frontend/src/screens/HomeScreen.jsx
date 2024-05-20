@@ -47,7 +47,7 @@ export default function HomeScreen() {
           loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
             carousel.map((carousel) => (
               <Carousel.Item>
-                <img src={`/admin/get-carousel-image/${carousel._id}`} alt='background' width='100%' className='carousel-image' />
+                <img src={`https://movieflix-lyart.vercel.app/admin/get-carousel-image/${carousel._id}`} alt='background' width='100%' className='carousel-image' />
                 <Carousel.Caption className='inner_content'>
                   <h1>{carousel.name}</h1>
                   <h5>{carousel.story}</h5>
