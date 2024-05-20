@@ -24,13 +24,13 @@ const app = express();
 app.use(express.json())
 app.use(cookieParser());
 
-// app.use(cors(
-//     {
-//         origin: ["https://movieflix-zzmw.vercel.app/"],
-//         methods: ["POST", "GET", "DELETE", "PUT"],
-//         credentials: "true"
-//     }
-// ))
+app.use(cors(
+    {
+        origin: ["https://movieflix-zzmw.vercel.app/"],
+        methods: ["POST", "GET", "DELETE", "PUT"],
+        credentials: "false",
+    }
+))
 dotenv.config();
 
 // const url = process.env.MONGODB_URI;
