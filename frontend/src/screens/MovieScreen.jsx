@@ -53,7 +53,7 @@ export default function MovieScreen() {
                 {loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                     <Row>
                         <Col md={3}>
-                            <img className='main_image' src={`https://movieflix-lyart.vercel.app/admin/get-movie-image/${movies._id}`} alt={movies.slug} width={300} />
+                            <img className='main_image' src={movies.image} alt={movies.slug} width={300} />
                         </Col>
                         <Col md={9}>
                             <h1>{movies.name}</h1><br />

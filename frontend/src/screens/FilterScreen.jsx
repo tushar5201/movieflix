@@ -140,7 +140,7 @@ const reducer = (state, action) => {
     }
 }
 
-const reducer1 = (action, state) => {
+const reducer1 = (state, action) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
             return { ...state, loading: true }
@@ -234,7 +234,7 @@ export default function FilterScreen() {
                                 (
                                     movie.category === category && (
                                         <Link key={movie._id} to={`/movie/${movie._id}`} >
-                                            <img src={`/admin/get-movie-image/${movie._id}`} alt={movie.name} className='slider_img' />
+                                            <img src={movie.image} alt={movie.name} className='slider_img' />
                                         </Link>
                                     )
                                 ))
@@ -250,7 +250,7 @@ export default function FilterScreen() {
                             (
                                 ser.category === category && (
                                     <Link key={ser._id} to={`/series/${ser._id}`} >
-                                        <img src={`/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
+                                        <img src={ser.image} alt={ser.name} className='slider_img' />
                                     </Link>
                                 )
                             ))
