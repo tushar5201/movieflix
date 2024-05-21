@@ -9,7 +9,6 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import AllSeries from './AllSeries';
 
 
 const reducer = (state, action) => {
@@ -25,6 +24,19 @@ const reducer = (state, action) => {
     }
 }
 
+const reducer1 = (state, action) => {
+    switch (action.type) {
+        case 'FETCH_REQUEST':
+            return { ...state, loading1: true }
+        case 'FETCH_SUCCESS':
+            return { ...state, loading1: false, series: action.payload }
+        case 'FETCH_FAIL':
+            return { ...state, loading1: false, error1: action.payload }
+        default:
+            return state;
+    }
+}
+
 export default function IndexScreen() {
 
     const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
@@ -32,6 +44,12 @@ export default function IndexScreen() {
         error: '',
         movies: []
     })
+
+    const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
+        loading1: true,
+        error1: '',
+        series: [],
+    });
 
     // const path = "https://movieflix-lyart.vercel.app";
 
@@ -46,6 +64,17 @@ export default function IndexScreen() {
             }
         }
         fetchMovie();
+
+        const fetchSeries = async () => {
+            dispatch1({ type: 'FETCH_REQUEST' });
+            try {
+                const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
+                dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
+            } catch (error) {
+                dispatch1({ type: 'FETCH_FAIL', payload: error.message })
+            }
+        }
+        fetchSeries();
 
     }, []);
 
@@ -93,8 +122,17 @@ export default function IndexScreen() {
 
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
                 <Slider className='slider' {...settings}>
-                    <AllSeries />
+                    {
+                        loading1 ? <LoadingBox /> : error1 ? <MessageBox variant='danger'>{error1}</MessageBox> : (
+                            series.map((ser) => (
+                                <Link key={ser._id} to={`/series/${ser._id}`}>
+                                    <img src={ser.image} alt={ser.name} className='slider_img' />
+                                    <div className='overlay'>{ser.name}<br />{ser.year}</div>
+                                </Link>
+                            )))
+                    }
                 </Slider>
+
             </div>
         </div>
     )
