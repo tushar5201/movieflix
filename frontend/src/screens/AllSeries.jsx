@@ -70,7 +70,7 @@ export default function AllSeries() {
     }
 
     return (
-        <Slider className='slider' {...settings}>
+        <div>
             {
                 loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                     series.map((ser) => (
@@ -80,6 +80,6 @@ export default function AllSeries() {
                         </Link>
                     )))
             }
-        </Slider>
+        </div>
     )
 }
