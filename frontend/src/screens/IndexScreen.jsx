@@ -42,11 +42,11 @@ export default function IndexScreen() {
     const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
-        movies: [1]
+        movies: []
     })
 
     const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
-        series: [1],
+        series: [],
         loading: true,
         error: ''
     });
@@ -112,7 +112,7 @@ export default function IndexScreen() {
                 <Slider className='slider' {...settings}>
                     {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
-                            movies.slice(0).reverse().map((movie) => (
+                            movies.map((movie) => (
                                 <Link className='overlay1' key={movie._id} to={`/movie/${movie._id}`}>
                                     <img src={`https://movieflix-lyart.vercel.app/admin/get-movie-image/${movie._id}`} alt={movie.title} className='slider_img' />
                                     <div className='overlay'>{movie.name}<br />{movie.year}</div>
@@ -124,7 +124,7 @@ export default function IndexScreen() {
                 <Slider className='slider' {...settings}>
                     {
                         loading1 ? <LoadingBox /> : error1 ? <MessageBox variant='danger'>{error1}</MessageBox> : (
-                            series.slice(0).reverse().map((ser) => (
+                            series.map((ser) => (
                                 <Link key={ser._id} to={`/series/${ser._id}`}>
                                     <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
                                     <div className='overlay'>{ser.name}<br />{ser.year}</div>

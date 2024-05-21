@@ -99,7 +99,7 @@ export default function Header1() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark sticky-top bg-black">
             <div className="container header">
-                <Link to="/" className="navbar-brand">
+                <Link to="/index" className="navbar-brand">
                     <img src='/images/movieflix_logo-trans.png' className='logo' alt='logo' />
                 </Link>
 
