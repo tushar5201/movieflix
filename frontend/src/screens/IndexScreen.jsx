@@ -9,6 +9,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import AllSeries from './AllSeries';
 
 
 const reducer = (state, action) => {
@@ -24,19 +25,6 @@ const reducer = (state, action) => {
     }
 }
 
-const reducer1 = (action, state) => {
-    switch (action.type) {
-        case 'FETCH_REQUEST':
-            return { ...state, loading1: true }
-        case 'FETCH_SUCCESS':
-            return { ...state, loading1: false, series: action.payload }
-        case 'FETCH_FAIL':
-            return { ...state, loading1: false, error1: action.payload }
-        default:
-            return state;
-    }
-}
-
 export default function IndexScreen() {
 
     const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
@@ -44,10 +32,6 @@ export default function IndexScreen() {
         error: '',
         movies: []
     })
-
-    const [{ series }, dispatch1] = useReducer((reducer1), {
-        series: [],
-    });
 
     // const path = "https://movieflix-lyart.vercel.app";
 
@@ -62,17 +46,6 @@ export default function IndexScreen() {
             }
         }
         fetchMovie();
-
-        const fetchSeries = async () => {
-            dispatch1({ type: 'FETCH_REQUEST' });
-            try {
-                const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
-                dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
-            } catch (error) {
-                dispatch1({ type: 'FETCH_FAIL', payload: error.message })
-            }
-        }
-        fetchSeries();
 
     }, []);
 
@@ -119,18 +92,7 @@ export default function IndexScreen() {
                 </Slider>
 
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
-                <Slider className='slider' {...settings}>
-                    {
-                        loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
-                            series.map((ser) => (
-                                <Link key={ser._id} to={`/series/${ser._id}`}>
-                                    <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
-                                    <div className='overlay'>{ser.name}<br />{ser.year}</div>
-                                </Link>
-                            )))
-                    }
-                </Slider>
-
+                <AllSeries />
             </div>
         </div>
     )
