@@ -16,7 +16,7 @@ const reducer = (state, action) => {
         case 'FETCH_REQUEST':
             return { ...state, loading: true };
         case 'FETCH_SUCCESS':
-            return { ...state, loading: false, series: action.payload };
+            return { ...state, loading: false, movies: action.payload, series: action.payload };
         case 'FETCH_FAILED':
             return { ...state, loading: false, error: action.payload };
         default:
@@ -39,9 +39,10 @@ const reducer = (state, action) => {
 
 export default function IndexScreen() {
 
-    const [{ loading, error, series }, dispatch] = useReducer((reducer), {
+    const [{ loading, error, movies, series }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
+        movies: [],
         series: []
     })
 
@@ -57,7 +58,7 @@ export default function IndexScreen() {
         const fetchMovie = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get("https://movieflix-lyart.vercel.app/api/series");
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies", "https://movieflix-lyart.vercel.app/api/series");
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -108,7 +109,7 @@ export default function IndexScreen() {
         <div className='body'>
             <Header />
             <div className="container">
-                {/* <h4 className='titles'> &nbsp;Popular movies on Movieflix</h4>
+                <h4 className='titles'> &nbsp;Popular movies on Movieflix</h4>
                 <Slider className='slider' {...settings}>
                     {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
@@ -118,7 +119,7 @@ export default function IndexScreen() {
                                     <div className='overlay'>{movie.name}<br />{movie.year}</div>
                                 </Link>
                             )))}
-                </Slider> */}
+                </Slider>
 
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
                 <Slider className='slider' {...settings}>

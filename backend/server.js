@@ -70,8 +70,8 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/api/movies', async (req, res) => {
-    const movies = await Movies.find();
-    res.send(movies);
+    const movie = await Movies.find();
+    res.send(movie);
 });
 
 app.get('/api/movies/:id', async (req, res) => {
