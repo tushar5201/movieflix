@@ -12,11 +12,11 @@ import Carousel from "./models/carouselModel.js";
 import { createCarousel, deleteCarousel, getCarouselImage, updateCarousel } from "./controllers/carouselController.js";
 import multer from "multer";
 import path from 'path'
-import { createMovie, deleteMovie, movieImageController, updateMovie } from "./controllers/movieController.js";
+import { createMovie, deleteMovie, updateMovie } from "./controllers/movieController.js";
 import { createCategory, deleteCategory } from "./controllers/caetgoryController.js";
 import Category from "./models/categoryModel.js";
 import crypto from 'crypto'
-import { createSeries, seriesImageController } from "./controllers/seriesController.js";
+import { createSeries } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
 import cors from "cors";
 
@@ -218,6 +218,6 @@ app.post('/admin/create-series', authentication, createSeries);
 app.post('/admin/create-category', authentication, createCategory);
 app.delete('/admin/delete-category', authentication, deleteCategory);
 
-app.listen(5000, () => {
-    console.log('serve at http://localhost:5000');
+app.listen(6000, () => {
+    console.log('serve at http://localhost:6000');
 })
