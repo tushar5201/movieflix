@@ -46,8 +46,8 @@ export default function IndexScreen() {
     })
 
     const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
-        loading: true,
-        error: '',
+        loading1: true,
+        error1: '',
         series: [],
     });
 
