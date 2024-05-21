@@ -57,7 +57,7 @@ export default function IndexScreen() {
         const fetchMovie = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies`);
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies");
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });

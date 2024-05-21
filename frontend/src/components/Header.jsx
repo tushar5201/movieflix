@@ -63,7 +63,7 @@ export default function Header1() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies`);
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies");
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -74,7 +74,7 @@ export default function Header1() {
         const fetchCategories = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/categories`);
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/categories");
                 dispatch1({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -85,7 +85,7 @@ export default function Header1() {
         const fetchSeries = async () => {
             dispatch2({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/series");
                 dispatch2({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch2({ type: 'FETCH_FAILED', payload: getError(error) });
