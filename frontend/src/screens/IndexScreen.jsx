@@ -27,11 +27,11 @@ const reducer = (state, action) => {
 const reducer1 = (action, state) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
-            return { ...state, loading1: true }
+            return { ...state, loading: true }
         case 'FETCH_SUCCESS':
-            return { ...state, loading1: false, series: action.payload }
+            return { ...state, loading: false, series: action.payload }
         case 'FETCH_FAIL':
-            return { ...state, loading1: false, error: action.payload }
+            return { ...state, loading: false, error: action.payload }
         default:
             return state;
     }
@@ -45,9 +45,9 @@ export default function IndexScreen() {
         movies: []
     })
 
-    const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
-        loading1: true,
-        error1: '',
+    const [{ series }, dispatch1] = useReducer((reducer1), {
+        loading: true,
+        error: '',
         series: [],
     });
 
@@ -123,7 +123,7 @@ export default function IndexScreen() {
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
                 <Slider className='slider' {...settings}>
                     {
-                        loading1 ? <LoadingBox /> : error1 ? <MessageBox variant='danger'>{error1}</MessageBox> : (
+                        loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                             series.map((ser) => (
                                 <Link key={ser._id} to={`/series/${ser._id}`}>
                                     <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
