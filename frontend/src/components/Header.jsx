@@ -59,8 +59,6 @@ export default function Header1() {
 
     const [search, setSearch] = useState('');
 
-    const path= "https://movieflix-lyart.vercel.app";
-
     useEffect(() => {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
@@ -101,7 +99,7 @@ export default function Header1() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark sticky-top bg-black">
             <div className="container header">
-                <Link className="navbar-brand">
+                <Link to="/" className="navbar-brand">
                     <img src='/images/movieflix_logo-trans.png' className='logo' alt='logo' />
                 </Link>
 
