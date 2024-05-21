@@ -16,7 +16,7 @@ const reducer = (state, action) => {
         case 'FETCH_REQUEST':
             return { ...state, loading: true };
         case 'FETCH_SUCCESS':
-            return { ...state, loading: false, movies: action.payload, series: action.payload };
+            return { ...state, loading: false, movies: action.payload };
         case 'FETCH_FAILED':
             return { ...state, loading: false, error: action.payload };
         default:
@@ -24,33 +24,32 @@ const reducer = (state, action) => {
     }
 }
 
-// const reducer1 = (action, state) => {
-//     switch (action.type) {
-//         case 'FETCH_REQUEST':
-//             return { ...state, loading: true }
-//         case 'FETCH_SUCCESS':
-//             return { ...state, loading: false, series: action.payload }
-//         case 'FETCH_FAIL':
-//             return { ...state, loading: false, error: action.payload }
-//         default:
-//             return state;
-//     }
-// }
+const reducer1 = (action, state) => {
+    switch (action.type) {
+        case 'FETCH_REQUEST':
+            return { ...state, loading1: true }
+        case 'FETCH_SUCCESS':
+            return { ...state, loading1: false, series: action.payload }
+        case 'FETCH_FAIL':
+            return { ...state, loading1: false, error1: action.payload }
+        default:
+            return state;
+    }
+}
 
 export default function IndexScreen() {
 
-    const [{ loading, error, movies, series }, dispatch] = useReducer((reducer), {
+    const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
-        movies: [],
-        series: []
+        movies: []
     })
 
-    // const [{ series }, dispatch1] = useReducer((reducer1), {
-    //     loading: true,
-    //     error: '',
-    //     series: [],
-    // });
+    const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
+        loading1: true,
+        error1: '',
+        series: [],
+    });
 
     // const path = "https://movieflix-lyart.vercel.app";
 
@@ -58,7 +57,7 @@ export default function IndexScreen() {
         const fetchMovie = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies", "https://movieflix-lyart.vercel.app/api/series");
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies");
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -66,16 +65,16 @@ export default function IndexScreen() {
         }
         fetchMovie();
 
-        // const fetchSeries = async () => {
-        //     dispatch1({ type: 'FETCH_REQUEST' });
-        //     try {
-        //         const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
-        //         dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
-        //     } catch (error) {
-        //         dispatch1({ type: 'FETCH_FAIL', payload: error.message })
-        //     }
-        // }
-        // fetchSeries();
+        const fetchSeries = async () => {
+            dispatch1({ type: 'FETCH_REQUEST' });
+            try {
+                const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
+                dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
+            } catch (error) {
+                dispatch1({ type: 'FETCH_FAIL', payload: error.message })
+            }
+        }
+        fetchSeries();
 
     }, []);
 
@@ -115,7 +114,7 @@ export default function IndexScreen() {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                             movies.map((movie) => (
                                 <Link className='overlay1' key={movie._id} to={`/movie/${movie._id}`}>
-                                    <img src={movie.image} alt={movie.title} className='slider_img' />
+                                    <img src={`https://movieflix-lyart.vercel.app/admin/get-movie-image/${movie._id}`} alt={movie.title} className='slider_img' />
                                     <div className='overlay'>{movie.name}<br />{movie.year}</div>
                                 </Link>
                             )))}
@@ -124,7 +123,7 @@ export default function IndexScreen() {
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
                 <Slider className='slider' {...settings}>
                     {
-                        loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
+                        loading1 ? <LoadingBox /> : error1 ? <MessageBox variant='danger'>{error1}</MessageBox> : (
                             series.map((ser) => (
                                 <Link key={ser._id} to={`/series/${ser._id}`}>
                                     <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
