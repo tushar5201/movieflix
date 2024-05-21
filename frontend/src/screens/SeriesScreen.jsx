@@ -37,7 +37,7 @@ export function SeriesScreen() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`/api/series/${id}`);
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/series/${id}`);
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -62,7 +62,7 @@ export function SeriesScreen() {
                 {loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                     <Row>
                         <Col md={3}>
-                            <img className="main_image" src={`/admin/get-series-image/${series._id}`} alt={series.slug} width={300} />
+                            <img className="main_image" src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${series._id}`} alt={series.slug} width={300} />
                         </Col>
                         <Col md={9}>
                             <h1>{series.name}</h1><br />

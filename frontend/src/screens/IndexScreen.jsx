@@ -54,16 +54,16 @@ export default function IndexScreen() {
     // const path = "https://movieflix-lyart.vercel.app";
 
     useEffect(() => {
-        // const fetchMovie = async () => {
-        //     dispatch({ type: 'FETCH_REQUEST' });
-        //     try {
-        //         const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies`);
-        //         dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
-        //     } catch (error) {
-        //         dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
-        //     }
-        // }
-        // fetchMovie();
+        const fetchMovie = async () => {
+            dispatch({ type: 'FETCH_REQUEST' });
+            try {
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies`);
+                dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
+            } catch (error) {
+                dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
+            }
+        }
+        fetchMovie();
 
         const fetchSeries = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
@@ -109,7 +109,7 @@ export default function IndexScreen() {
             <Header />
             <div className="container">
                 <h4 className='titles'> &nbsp;Popular movies on Movieflix</h4>
-                {/* <Slider className='slider' {...settings}>
+                <Slider className='slider' {...settings}>
                     {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                             movies.slice(0).reverse().map((movie) => (
@@ -118,7 +118,7 @@ export default function IndexScreen() {
                                     <div className='overlay'>{movie.name}<br />{movie.year}</div>
                                 </Link>
                             )))}
-                </Slider> */}
+                </Slider>
 
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
                 <Slider className='slider' {...settings}>
