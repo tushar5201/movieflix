@@ -25,7 +25,7 @@ export default function CarouselController() {
     const navigate = useNavigate()
     const callAdminPage = async (req, res) => {
         try {
-            const res = await axios.get('/admin', { credentials: 'include' });
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { credentials: 'include' });
             if (!res.status === 200) {
                 const err = new Error(res.err)
                 throw err;
@@ -49,7 +49,7 @@ export default function CarouselController() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const carousel = await axios.get('/api/carousel');
+                const carousel = await axios.get('https://movieflix-lyart.vercel.app/api/carousel');
                 dispatch({ type: 'FETCH_SUCCESS', payload: carousel.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })
@@ -59,7 +59,7 @@ export default function CarouselController() {
     }, []);
 
     const handleDelete = async (id) => {
-        const res = await fetch('/admin/delete-carousel', {
+        const res = await fetch('https://movieflix-lyart.vercel.app/admin/delete-carousel', {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ id })

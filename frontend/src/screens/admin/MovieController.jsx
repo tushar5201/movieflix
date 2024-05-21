@@ -44,7 +44,7 @@ export default function MovieController() {
     const navigate = useNavigate();
     const callAdminPage = async (req, res) => {
         try {
-            const res = await axios.get('/admin', { credentials: 'include' });
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { credentials: 'include' });
             if (!res.status === 200) {
                 const err = new Error(res.err)
                 throw err;
@@ -62,7 +62,7 @@ export default function MovieController() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const movies = await axios.get('/api/movies');
+                const movies = await axios.get('https://movieflix-lyart.vercel.app/api/movies');
                 dispatch({ type: 'FETCH_SUCCESS', payload: movies.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })
@@ -162,7 +162,7 @@ export function CreateMovie() {
             movieData.append('year', year);
             movieData.append('category', category);
 
-            const res = await axios.post('/admin/create-movie', movieData, {
+            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-movie', movieData, {
                 onUploadProgress: (data) => {
                     setUploaded(Math.round((data.loaded / data.total) * 100))
                 }
@@ -184,7 +184,7 @@ export function CreateMovie() {
         const fetchCategories = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get('/api/categories');
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/categories');
                 dispatch1({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -204,12 +204,12 @@ export function CreateMovie() {
                     <hr />
                     <Form onSubmit={handleSubmit}>
                         <input type="text" name='name' value={name} className='admin-input' placeholder='Name' onChange={(e) => setName(e.target.value)} /><br />
-                        <input type="file" name='image' className='admin-input' placeholder='Image' onChange={(e) => setImage(e.target.files[0])} /><br />
-                        {image && (
+                        <input type="text" name='image' value={image} className='admin-input' placeholder='Image' onChange={(e) => setImage(e.target.value)} /><br />
+                        {/* {image && (
                             <div className="text-center">
                                 <img src={URL.createObjectURL(image)} alt='carousel' height={'200px'} />
                             </div>
-                        )}
+                        )} */}
                         <input type="text" name='slug' value={slug} className='admin-input' placeholder='Slug' onChange={(e) => setSlug(e.target.value)} /><br />
                         <input type="text" name='story' value={story} className='admin-input' placeholder='Story' onChange={(e) => setStory(e.target.value)} /><br />
                         <input type="text" name='cast' value={cast} className='admin-input' placeholder='Cast' onChange={(e) => setCast(e.target.value)} /><br />
@@ -293,7 +293,7 @@ export function UpdateMovie() {
             movieData.append('year', year);
             movieData.append('category', category);
 
-            const res = await axios.put('/admin/update-movie', movieData);
+            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-movie', movieData);
             if (res.status === 201) {
                 toast.success('Movie updated successfully.');
                 navigate('/dashboard/movies');
@@ -315,7 +315,7 @@ export function UpdateMovie() {
         const fetchCategories = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get('/api/categories');
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/categories');
                 dispatch1({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -326,7 +326,7 @@ export function UpdateMovie() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const about = await axios.get('/api/movies');
+                const about = await axios.get('https://movieflix-lyart.vercel.app/api/movies');
                 dispatch({ type: 'FETCH_SUCCESS', payload: about.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })

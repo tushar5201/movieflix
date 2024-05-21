@@ -45,7 +45,7 @@ export default function SeriesController() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const series = await axios.get('/api/series');
+                const series = await axios.get('https://movieflix-lyart.vercel.app/api/series');
                 dispatch({ type: 'FETCH_SUCCESS', payload: series.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })
@@ -121,7 +121,7 @@ export function CreateSeries() {
         const fetchCategories = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get('/api/categories');
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/categories');
                 dispatch1({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -158,7 +158,7 @@ export function CreateSeries() {
             seriesForm.append("sande", sande1);
             seriesForm.append("image", image);
 
-            const res = await axios.post("/admin/create-series", seriesForm);
+            const res = await axios.post("https://movieflix-lyart.vercel.app/admin/create-series", seriesForm);
             if (res.status === 200) {
                 toast.success("Series Added Successfully.");
                 navigate("/dashboard/series");

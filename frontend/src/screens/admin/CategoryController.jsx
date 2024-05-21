@@ -29,7 +29,7 @@ export default function CategoryController() {
     const navigate = useNavigate();
     const callAdminPage = async (req, res) => {
         try {
-            const res = await axios.get('/admin', { credentials: 'include' });
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { credentials: 'include' });
             if (!res.status === 200) {
                 const err = new Error(res.err)
                 throw err;
@@ -47,7 +47,7 @@ export default function CategoryController() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const categories = await axios.get('/api/categories');
+                const categories = await axios.get('https://movieflix-lyart.vercel.app/api/categories');
                 dispatch({ type: 'FETCH_SUCCESS', payload: categories.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })
@@ -57,7 +57,7 @@ export default function CategoryController() {
     }, [])
 
     const handleDelete = async (id) => {
-        const res = await fetch('/admin/delete-category', {
+        const res = await fetch('https://movieflix-lyart.vercel.app/admin/delete-category', {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ id })

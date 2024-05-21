@@ -19,7 +19,7 @@ export default function SignupScreen() {
         axios.post('https://movieflix-lyart.vercel.app/send-otp', { email }).then((res) => {
             // console.log(res);
             alert("Mail sent");
-            setDisplay('input d-block');
+            setDisplay('signin_input d-block');
     }).catch((err) => {
         console.log(err);
         alert('Mail sent failed')
