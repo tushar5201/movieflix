@@ -35,7 +35,7 @@ export default function MovieScreen() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get(`/api/movies/${id}`);
+                const res = await axios.get(`https://movieflix-lyart.vercel.app/api/movies/${id}`);
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -53,7 +53,7 @@ export default function MovieScreen() {
                 {loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                     <Row>
                         <Col md={3}>
-                            <img className='main_image' src={`/admin/get-movie-image/${movies._id}`} alt={movies.slug} width={300} />
+                            <img className='main_image' src={`https://movieflix-lyart.vercel.app/admin/get-movie-image/${movies._id}`} alt={movies.slug} width={300} />
                         </Col>
                         <Col md={9}>
                             <h1>{movies.name}</h1><br />
