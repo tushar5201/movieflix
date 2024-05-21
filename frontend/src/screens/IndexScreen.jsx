@@ -92,7 +92,7 @@ export default function IndexScreen() {
                 </Slider>
 
                 <h4 className='titles'>&nbsp;Popular series on Movieflix</h4>
-                <AllSeries />
+                {/* <AllSeries /> */}
             </div>
         </div>
     )
