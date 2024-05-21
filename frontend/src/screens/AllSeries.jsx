@@ -75,7 +75,7 @@ export default function AllSeries() {
                 loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
                     series.map((ser) => (
                         <Link key={ser._id} to={`/series/${ser._id}`}>
-                            <img src={`https://movieflix-lyart.vercel.app/admin/get-series-image/${ser._id}`} alt={ser.name} className='slider_img' />
+                            <img src={ser.image} alt={ser.name} className='slider_img' />
                             <div className='overlay'>{ser.name}<br />{ser.year}</div>
                         </Link>
                     )))
