@@ -7,7 +7,7 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const reducer = (action, state) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
             return { ...state, loading: true }
