@@ -16,7 +16,7 @@ export default function SignupScreen() {
     const [display, setDisplay] = useState('d-none')
 
     const sendMail = async (e) => {
-        axios.post('/send-otp', { email }).then((res) => {
+        axios.post('https://movieflix-lyart.vercel.app/send-otp', { email }).then((res) => {
             // console.log(res);
             alert("Mail sent");
             setDisplay('input d-block');
@@ -30,7 +30,7 @@ const submitHandler = async (e) => {
     e.preventDefault();
 
     // const res = await axios.post('/signup', { name,email, password, isAdmin });
-    const res = await fetch('/sign_up', {
+    const res = await fetch('https://movieflix-lyart.vercel.app/sign_up', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ name, email, password, isAdmin, otp })
@@ -56,9 +56,9 @@ return (
         <Header />
         <div className="container">
             <Form className='login_form' onSubmit={submitHandler}>
-                <input type='name' name='name' value={name} className='input' placeholder='Name' onChange={(e) => setName(e.target.value)} required/><br />
-                <input type='email' name='mail' value={email} className='input' placeholder='E mail' onChange={(e) => setEmail(e.target.value)} required/><br />
-                <input type='password' name='password' value={password} className='input' placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/><br />
+                <input type='name' name='name' value={name} className='signin_input' placeholder='Name' onChange={(e) => setName(e.target.value)} required/><br />
+                <input type='email' name='mail' value={email} className='signin_input' placeholder='E mail' onChange={(e) => setEmail(e.target.value)} required/><br />
+                <input type='password' name='password' value={password} className='signin_input' placeholder='Password' onChange={(e) => setPassword(e.target.value)} required/><br />
                 <label>Is admin : </label>
                 <input type='radio' name='isAdmin' id='true' value="true" onChange={(e) => setIsAdmin(e.target.value)} />True
                 <input type='radio' name='isAdmin' id='false' value="false" onChange={(e) => setIsAdmin(e.target.value)} />False<br /><br />

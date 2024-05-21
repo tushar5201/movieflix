@@ -26,7 +26,7 @@ export default function SignInScreen() {
         try {
             e.preventDefault();
             if (text === captcha) {
-                const res = await axios.post('/sign_in', { email, password })
+                const res = await axios.post('https://movieflix-lyart.vercel.app/sign_in', { email, password })
                 toast.success("Signin Successful.");
                 localStorage.setItem('userInfo', JSON.stringify(res));
                 navigate(redirect || '/');
