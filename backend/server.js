@@ -198,21 +198,21 @@ app.get('/admin', authentication, (req, res) => {
 
 // Carousel Route
 
-app.post('/admin/create-carousel', upload.single('image'), authentication, createCarousel);
+app.post('/admin/create-carousel', authentication, createCarousel);
 app.get('/admin/get-carousel-image/:cid', getCarouselImage);
 app.delete('/admin/delete-carousel', authentication, deleteCarousel);
-app.put('/admin/update-carousel', upload.single('image'), authentication, updateCarousel);
+app.put('/admin/update-carousel', authentication, updateCarousel);
 
 // Movie Route
 // app.post('/admin/create-movie', uploadGrid.fields([{name: 'image', maxCount:1},{name: 'video', maxCount: 1}]), authentication, createMovie);
-app.post('/admin/create-movie', upload.single('image'), authentication, createMovie);
+app.post('/admin/create-movie', authentication, createMovie);
 app.delete('/admin/delete-movie', authentication, deleteMovie);
-app.get('/admin/get-movie-image/:imgid', movieImageController);
-app.put('/admin/update-movie', upload.single('image'), authentication, updateMovie);
+// app.get('/admin/get-movie-image/:imgid', movieImageController);
+app.put('/admin/update-movie', authentication, updateMovie);
 
 // Series Routes
-app.post('/admin/create-series', upload.single('image'), authentication, createSeries);
-app.get('/admin/get-series-image/:imgid', seriesImageController);
+app.post('/admin/create-series', authentication, createSeries);
+// app.get('/admin/get-series-image/:imgid', seriesImageController);
 
 //category Route
 app.post('/admin/create-category', authentication, createCategory);

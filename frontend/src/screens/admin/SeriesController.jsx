@@ -181,12 +181,12 @@ export function CreateSeries() {
 
                     <Form onSubmit={handleSubmit}>
                         <input type="text" name='name' value={name} className='admin-input' placeholder='Name' onChange={(e) => setName(e.target.value)} /><br />
-                        <input type="file" name='image' className='admin-input' placeholder='Image' onChange={(e) => setImage(e.target.files[0])} /><br />
-                        {image && (
+                        <input type="text" name='image' value={image} className='admin-input' placeholder='Image' onChange={(e) => setImage(e.target.value)} /><br />
+                        {/* {image && (
                             <div className="text-center">
                                 <img src={URL.createObjectURL(image)} alt='carousel' height={'200px'} />
                             </div>
-                        )}
+                        )} */}
                         <input type="text" name='story' value={story} className='admin-input' placeholder='Story' onChange={(e) => setStory(e.target.value)} /><br />
                         <input type="text" name='cast' value={cast} className='admin-input' placeholder='Cast' onChange={(e) => setCast(e.target.value)} /><br />
                         <input type="text" name='director' value={director} className='admin-input' placeholder='Director' onChange={(e) => setDirector(e.target.value)} /><br />

@@ -4,7 +4,7 @@ const movieSchema = new mongoose.Schema(
     {
         tmdb: String,
         name: String,
-        image: {data: Buffer, contentType: String},
+        image: String,
         story: String,
         cast: String,
         director: String,

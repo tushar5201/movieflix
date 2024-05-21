@@ -6,10 +6,10 @@ export const createMovie = async (req, res) => {
         const { name, slug, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
         const movie = new Movies({ name, slug, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
 
-        if (req.file) {
-            movie.image.data = fs.readFileSync(req.file.path);
-            movie.image.contentType = req.file.type;
-        }
+        // if (req.file) {
+        //     movie.image.data = fs.readFileSync(req.file.path);
+        //     movie.image.contentType = req.file.type;
+        // }
         await movie.save();
         res.status(200).send({
             success: true,
@@ -25,21 +25,21 @@ export const createMovie = async (req, res) => {
     }
 }
 
-export const movieImageController = async (req, res) => {
-    try {
-        const movies = await Movies.findById(req.params.imgid).select('image');
-        if (movies.image) {
-            res.set('content-type', movies.image.name)
-            return res.status(200).send(movies.image.data)
-        }
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({
-            success: false,
-            message: 'err'
-        })
-    }
-}
+// export const movieImageController = async (req, res) => {
+//     try {
+//         const movies = await Movies.findById(req.params.imgid).select('image');
+//         if (movies.image) {
+//             res.set('content-type', movies.image.name)
+//             return res.status(200).send(movies.image.data)
+//         }
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).send({
+//             success: false,
+//             message: 'err'
+//         })
+//     }
+// }
 
 export const deleteMovie = async (req, res) => {
     try {
@@ -61,12 +61,15 @@ export const deleteMovie = async (req, res) => {
 
 export const updateMovie = async (req, res) => {
     try {
-        let { id, name, slug, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
-        const image = req.file;
+        let { id, name, slug, story, cast, image, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
+        // const image = req.file;
         const exist = await Movies.findById(id);
         if (exist) {
             if (name === '') {
                 name = exist.name
+            }
+            if (image === '') {
+                image = exist.image
             }
             if (story === '') {
                 story = exist.story
@@ -107,15 +110,7 @@ export const updateMovie = async (req, res) => {
             if (tmdb === '') {
                 tmdb = exist.tmdb
             }
-            const movie = await Movies.findByIdAndUpdate(id, { name, slug, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
-
-            if (image) {
-                movie.image.data = fs.readFileSync(image.path);
-                movie.image.contentType = image.type;
-            } else {
-                movie.image.data = exist.image.data;
-                movie.image.contentType = exist.image.contentType;
-            }
+            const movie = await Movies.findByIdAndUpdate(id, { name, slug, story, cast, image, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
 
             await movie.save();
 
