@@ -112,7 +112,7 @@ export default function IndexScreen() {
                 <Slider className='slider' {...settings}>
                     {
                         loading ? <LoadingBox /> : error ? <MessageBox variant='danger'>{error}</MessageBox> : (
-                            movies.slice(0).reverse().map((movie) => (
+                            movies.map((movie) => (
                                 <Link className='overlay1' key={movie._id} to={`/movie/${movie._id}`}>
                                     <img src={movie.image} alt={movie.title} className='slider_img' />
                                     <div className='overlay'>{movie.name}<br />{movie.year}</div>
@@ -124,7 +124,7 @@ export default function IndexScreen() {
                 <Slider className='slider' {...settings}>
                     {
                         loading1 ? <LoadingBox /> : error1 ? <MessageBox variant='danger'>{error1}</MessageBox> : (
-                            series.slice(0).reverse().map((ser) => (
+                            series.map((ser) => (
                                 <Link key={ser._id} to={`/series/${ser._id}`}>
                                     <img src={ser.image} alt={ser.name} className='slider_img' />
                                     <div className='overlay'>{ser.name}<br />{ser.year}</div>
