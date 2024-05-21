@@ -16,7 +16,7 @@ const reducer = (state, action) => {
         case 'FETCH_REQUEST':
             return { ...state, loading: true };
         case 'FETCH_SUCCESS':
-            return { ...state, loading: false, movies: action.payload };
+            return { ...state, loading: false, movies: action.payload, series: action.payload };
         case 'FETCH_FAILED':
             return { ...state, loading: false, error: action.payload };
         default:
@@ -24,32 +24,33 @@ const reducer = (state, action) => {
     }
 }
 
-const reducer1 = (action, state) => {
-    switch (action.type) {
-        case 'FETCH_REQUEST':
-            return { ...state, loading: true }
-        case 'FETCH_SUCCESS':
-            return { ...state, loading: false, series: action.payload }
-        case 'FETCH_FAIL':
-            return { ...state, loading: false, error: action.payload }
-        default:
-            return state;
-    }
-}
+// const reducer1 = (action, state) => {
+//     switch (action.type) {
+//         case 'FETCH_REQUEST':
+//             return { ...state, loading: true }
+//         case 'FETCH_SUCCESS':
+//             return { ...state, loading: false, series: action.payload }
+//         case 'FETCH_FAIL':
+//             return { ...state, loading: false, error: action.payload }
+//         default:
+//             return state;
+//     }
+// }
 
 export default function IndexScreen() {
 
-    const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
+    const [{ loading, error, movies, series }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
-        movies: []
+        movies: [],
+        series: []
     })
 
-    const [{ series }, dispatch1] = useReducer((reducer1), {
-        loading: true,
-        error: '',
-        series: [],
-    });
+    // const [{ series }, dispatch1] = useReducer((reducer1), {
+    //     loading: true,
+    //     error: '',
+    //     series: [],
+    // });
 
     // const path = "https://movieflix-lyart.vercel.app";
 
@@ -57,7 +58,7 @@ export default function IndexScreen() {
         const fetchMovie = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies");
+                const res = await axios.get("https://movieflix-lyart.vercel.app/api/movies", "https://movieflix-lyart.vercel.app/api/series");
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -65,16 +66,16 @@ export default function IndexScreen() {
         }
         fetchMovie();
 
-        const fetchSeries = async () => {
-            dispatch1({ type: 'FETCH_REQUEST' });
-            try {
-                const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
-                dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
-            } catch (error) {
-                dispatch1({ type: 'FETCH_FAIL', payload: error.message })
-            }
-        }
-        fetchSeries();
+        // const fetchSeries = async () => {
+        //     dispatch1({ type: 'FETCH_REQUEST' });
+        //     try {
+        //         const series = await axios.get(`https://movieflix-lyart.vercel.app/api/series`);
+        //         dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
+        //     } catch (error) {
+        //         dispatch1({ type: 'FETCH_FAIL', payload: error.message })
+        //     }
+        // }
+        // fetchSeries();
 
     }, []);
 
