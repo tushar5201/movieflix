@@ -72,7 +72,7 @@ app.get('/', async (req, res) => {
 app.get('/api/movies', async (req, res) => {
     const movies = await Movies.find();
     res.send(movies);
-})
+});
 
 app.get('/api/movies/:id', async (req, res) => {
     const movie = await Movies.findOne({ _id: req.params.id });
