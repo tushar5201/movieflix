@@ -165,16 +165,16 @@ export default function FilterScreen() {
     })
 
     const [{ series }, dispatch1] = useReducer((reducer1), {
-        series: [],
         loading: true,
-        error: ''
+        error: '',
+        series: []
     })
 
     useEffect(() => {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get('/api/movies');
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/movies');
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data });
             } catch (error) {
                 dispatch({ type: 'FETCH_FAILED', payload: getError(error) });
@@ -185,7 +185,7 @@ export default function FilterScreen() {
         const fetchSeries = async () => {
             dispatch1({ type: 'FETCH_REQUEST' });
             try {
-                const series = await axios.get('/api/series');
+                const series = await axios.get('https://movieflix-lyart.vercel.app/api/series');
                 dispatch1({ type: 'FETCH_SUCCESS', payload: series.data })
             } catch (error) {
                 dispatch1({ type: 'FETCH_FAIL', payload: error.message })
