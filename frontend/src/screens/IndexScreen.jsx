@@ -46,9 +46,9 @@ export default function IndexScreen() {
     })
 
     const [{ loading1, error1, series }, dispatch1] = useReducer((reducer1), {
-        series: [],
         loading: true,
-        error: ''
+        error: '',
+        series: [],
     });
 
     // const path = "https://movieflix-lyart.vercel.app";
