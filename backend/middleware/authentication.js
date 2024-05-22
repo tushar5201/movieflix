@@ -3,7 +3,7 @@ import Users from "../models/userModel.js";
 
 const authentication = async (req, res, next) => {
     try {
-        const token = req.cookies;
+        const token = req.cookies.movieflix;
         const verifyToken = jwt.verify(token, 'hellofuckyou');
         const rootUser = await Users.findOne({ _id: verifyToken._id });
 
