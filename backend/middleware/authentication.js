@@ -14,7 +14,7 @@ const authentication = async (req, res, next) => {
         req.userId = rootUser._id;
         next();
     } catch (err) {
-        res.status(401).send('Unauthorized token.')
+        // res.status(401).send('Unauthorized token.')
         console.log(err);
     }
 }
