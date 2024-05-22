@@ -89,11 +89,11 @@ app.get('/api/series', async (req, res) => {
 });
 
 app.get('/api/series/:id', async (req, res) => {
-    const series = await Series.findOne({_id: req.params.id});
-    if(series) {
+    const series = await Series.findOne({ _id: req.params.id });
+    if (series) {
         res.send(series);
     } else {
-        res.status(404).send({message: "Not found"})
+        res.status(404).send({ message: "Not found" })
     }
 })
 
@@ -139,12 +139,9 @@ app.post('/sign_in', async (req, res) => {
     if (user) {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (isMatch) {
-            const isAdmin = user.isAdmin;
-            if (isAdmin) {
-                const token = await user.generateAuthToken();
-                console.log(token);
-                res.cookie("movieflix", token);
-            }
+            const token = await user.generateAuthToken();
+            console.log(token);
+            res.cookie("movieflix", token);
             res.status(200).send(user)
         }
     } else {

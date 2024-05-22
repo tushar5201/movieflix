@@ -7,7 +7,7 @@ import AdminMenu from '../../components/AdminMenu';
 export default function AdminView() {
 
     const navigate = useNavigate();
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState("");
 
     const callAdminPage = async () => {
         try {

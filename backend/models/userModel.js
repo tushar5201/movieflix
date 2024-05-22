@@ -8,18 +8,13 @@ const userSchema = new mongoose.Schema(
         email: String,
         password: String,
         isAdmin: Boolean,
-        tokens: [
-            {
-                token: String
-            }
-        ]
     }
 )
 
 //hashing password
 
-userSchema.pre('save', async function (next, error)  {
-    if(this.isModified("password")) {
+userSchema.pre('save', async function (next, error) {
+    if (this.isModified("password")) {
         this.password = bcrypt.hashSync(this.password, 12);
     }
     next();
@@ -27,12 +22,9 @@ userSchema.pre('save', async function (next, error)  {
 
 userSchema.methods.generateAuthToken = async function () {
     try {
-        let token = jwt.sign({ _id: this._id }, 'hellofuckyou', {
+        return jwt.sign({ _id: this._id.toString(), name: this.name, email: this.email }, 'hellofuckyou', {
             expiresIn: 1800000
-        }) // login id
-        this.tokens = await this.tokens.concat({ token: token });
-        await this.save();
-        return token;
+        }) 
     } catch (err) {
         console.log(err);
     }

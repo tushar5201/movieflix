@@ -3,11 +3,9 @@ import Users from "../models/userModel.js";
 
 const authentication = async (req, res, next) => {
     try {
-        // const token = localStorage.getItem("movieflix");
-        const token = req.cookies.movieflix;
-        // console.log(token);
+        const token = req.cookies;
         const verifyToken = jwt.verify(token, 'hellofuckyou');
-        const rootUser = await Users.findOne({ _id: verifyToken._id, 'tokens.token': token });
+        const rootUser = await Users.findOne({ _id: verifyToken._id });
 
         if (!rootUser) { throw new Error('User not found') }
 
