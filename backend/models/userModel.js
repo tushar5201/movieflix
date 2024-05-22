@@ -22,7 +22,7 @@ userSchema.pre('save', async function (next, error) {
 
 userSchema.methods.generateAuthToken = async function () {
     try {
-        return jwt.sign({ _id: this._id, name: this.name, email: this.email }, 'hellofuckyou', {
+        return jwt.sign({ _id: this._id }, 'hellofuckyou', {
             expiresIn: 1800000
         }) 
     } catch (err) {
