@@ -27,8 +27,10 @@ userSchema.pre('save', async function (next, error)  {
 
 userSchema.methods.generateAuthToken = async function () {
     try {
-        let token = jwt.sign({ _id: this._id }, 'hellofuckyou') // login id
-        this.tokens = await this.tokens.concat({ token: token });
+        let token = jwt.sign({ _id: this._id }, 'hellofuckyou', {
+            expiresIn: 1800000
+        }) // login id
+        // this.tokens = await this.tokens.concat({ token: token });
         await this.save();
         return token;
     } catch (err) {

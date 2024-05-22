@@ -143,10 +143,7 @@ app.post('/sign_in', async (req, res) => {
             if (isAdmin) {
                 const token = await user.generateAuthToken();
                 console.log(token);
-                res.cookie("movieflix", token, {
-                    expires: new Date(Date.now() + 25892000000),
-                    secure: false
-                });
+                res.cookie("movieflix", token);
             }
             res.status(200).send(user)
         }
