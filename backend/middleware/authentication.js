@@ -10,7 +10,12 @@ const authentication = async (req, res, next) => {
         // if (!rootUser) { throw new Error('User not found') }
 
         // req.rootUser = rootUser;
-        next();
+        if (verified) {
+            return res.send("Successfully Verified");
+        } else {
+            // Access Denied
+            return res.status(401).send(error);
+        }
     } catch (err) {
         res.status(401).send('Unauthorized token.')
         console.log(err);
