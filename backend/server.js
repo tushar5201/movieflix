@@ -145,7 +145,7 @@ app.post('/sign_in', async (req, res) => {
             const token = jwt.sign({ email }, 'hellofuckyou', {
                 expiresIn: 18000000
             })
-            res.cookie("movieflixToken", token, { maxAge: 18000000 });
+            res.cookie("movieflixToken", token);
             res.status(200).send(user)
         }
     } else {
