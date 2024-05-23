@@ -19,7 +19,7 @@ import crypto from 'crypto'
 import { createSeries } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
 import cors from "cors";
-import { jwt } from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
 
 const app = express();
 app.use(express.json())
