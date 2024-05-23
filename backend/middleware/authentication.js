@@ -3,7 +3,7 @@ import Users from "../models/userModel.js";
 
 const authentication = async (req, res, next) => {
     try {
-        const token = JSON.stringify(req.cookies);
+        const token = JSON.parse(req.cookies);
         if (token) {
             const verifyToken = jwt.verify(token, 'hellofuckyou');
             const rootUser = await Users.findOne({ _id: verifyToken._id });

@@ -29,7 +29,7 @@ export default function SignInScreen() {
                 const res = await axios.post('https://movieflix-lyart.vercel.app/sign_in', { email, password })
                 toast.success("Signin Successful.");
                 localStorage.setItem('userInfo', JSON.stringify(res));
-                navigate(redirect || '/');
+                navigate(redirect || '/index');
             } else {
                 toast.error('Invalid captcha')
             }
