@@ -143,7 +143,7 @@ app.post('/sign_in', async (req, res) => {
             // const token = await user.generateAuthToken();
             // console.log(token);
             const token = jwt.sign({ email }, 'hellofuckyou', {
-                expiresIn: 18000000
+                expiresIn: 63072000
             })
             if (token) {
                 res.cookie("movieflixToken", token, {
