@@ -3,17 +3,13 @@ import Users from "../models/userModel.js";
 
 const authentication = async (req, res, next) => {
     try {
-        const token = JSON.parse(req.cookies);
-        if (token) {
-            const verifyToken = jwt.verify(token, 'hellofuckyou');
-            const rootUser = await Users.findOne({ _id: verifyToken._id });
+        const token = req.cookies;
+        const verifyToken = jwt.verify(token, 'hellofuckyou');
+        const rootUser = await Users.findOne({ _id: verifyToken._id });
 
-            if (!rootUser) { throw new Error('User not found') }
+        if (!rootUser) { res.status(450).send('User not found') }
 
-            req.rootUser = rootUser;
-        } else {
-            res.status(402).send('Token not found')
-        }
+        req.rootUser = rootUser;
         next();
     } catch (err) {
         res.status(401).send('Unauthorized token.')
