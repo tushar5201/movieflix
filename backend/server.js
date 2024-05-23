@@ -146,7 +146,9 @@ app.post('/sign_in', async (req, res) => {
                 expiresIn: 18000000
             })
             if (token) {
-                res.cookie("movieflixToken", token);
+                res.cookie("movieflixToken", token, {
+                    maxAge: 63072000
+                });
                 res.status(200).send(user)
             } else {
                 res.status(450).send("no token")
