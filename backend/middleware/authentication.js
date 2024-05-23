@@ -5,6 +5,7 @@ const authentication = async (req, res, next) => {
     try {
         const token = req.cookies;
         const verifyToken = jwt.verify(token, 'hellofuckyou');
+        if(!verifyToken){ res.status(410).send("not verified") }
         const rootUser = await Users.findOne({ _id: verifyToken._id });
 
         if (!rootUser) { res.status(450).send('User not found') }
@@ -12,7 +13,7 @@ const authentication = async (req, res, next) => {
         req.rootUser = rootUser;
         next();
     } catch (err) {
-        res.status(403).send('Unauthorized token.')
+        res.status(401).send('Unauthorized token.')
         console.log(err);
     }
 }
