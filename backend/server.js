@@ -145,14 +145,10 @@ app.post('/sign_in', async (req, res) => {
             const token = jwt.sign({ email }, 'hellofuckyou', {
                 expiresIn: 63072000
             })
-            if (token) {
-                res.cookie("movieflixToken", token, {
-                    maxAge: 63072000
-                });
-                res.status(200).send(user)
-            } else {
-                res.status(450).send("no token")
-            }
+            res.cookie('movieflixToken', token, {
+                maxAge: 63072000
+            });
+            res.status(200).send(user)
         }
     } else {
         res.status(401).send("Invalid credentials.")
