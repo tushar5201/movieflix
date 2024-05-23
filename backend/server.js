@@ -19,6 +19,7 @@ import crypto from 'crypto'
 import { createSeries } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
 import cors from "cors";
+import { JsonWebTokenError } from "jsonwebtoken";
 
 const app = express();
 app.use(express.json())
@@ -139,8 +140,11 @@ app.post('/sign_in', async (req, res) => {
     if (user) {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (isMatch) {
-            const token = await user.generateAuthToken();
-            console.log(token);
+            // const token = await user.generateAuthToken();
+            // console.log(token);
+            const token = jwt.sign({ email }, 'hellofuckyou', {
+                expiresIn: 1800000
+            })
             res.cookie("movieflix", token);
             res.status(200).send(user)
         }
