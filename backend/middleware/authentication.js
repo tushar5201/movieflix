@@ -4,18 +4,14 @@ import Users from "../models/userModel.js";
 const authentication = async (req, res, next) => {
     try {
         const token = req.cookies.movieflixToken;
+        console.log(token);
         const verifyToken = jwt.verify(token, 'hellofuckyou');
-        // const rootUser = await Users.findOne({ _id: verifyToken._id });
+        const rootUser = await Users.findOne({ _id: verifyToken._id });
 
-        // if (!rootUser) { throw new Error('User not found') }
+        if (!rootUser) { throw new Error('User not found') }
 
-        // req.rootUser = rootUser;
-        if (verified) {
-            return res.send("Successfully Verified");
-        } else {
-            // Access Denied
-            return res.status(401).send(error);
-        }
+        req.rootUser = rootUser;
+        next();
     } catch (err) {
         res.status(401).send('Unauthorized token.')
         console.log(err);
