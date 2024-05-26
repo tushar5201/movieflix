@@ -5,7 +5,6 @@ const authentication = async (req, res, next) => {
     try {
         const token = req.cookies.movieflixToken;
         if (token) {
-            console.log(token);
             const verifyToken = jwt.verify(token, 'hellofuckyou');
             const rootUser = await Users.findOne({ _id: verifyToken._id });
 
