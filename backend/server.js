@@ -142,9 +142,14 @@ app.post('/sign_in', async (req, res) => {
         if (isMatch) {
             // const token = await user.generateAuthToken();
             // console.log(token);
-            const token = jwt.sign({ email }, 'hellofuckyou');
-            res.cookie('movieflixToken', token);
-            res.status(200).send(user)
+            const token = jwt.sign({ email: email }, "h");
+            return res
+                .cookie('movieflixToken', token, {
+                    secure: true,
+                    maxAge: 63072000,
+                })
+                .status(200)
+                .send({user})
         }
     } else {
         res.status(401).send("Invalid credentials.")
