@@ -149,7 +149,7 @@ app.post('/sign_in', async (req, res) => {
                     maxAge: 63072000,
                 })
                 .status(200)
-                .send({user})
+                .send(user)
         }
     } else {
         res.status(401).send("Invalid credentials.")
