@@ -26,7 +26,7 @@ const authentication = async (req, res, next) => {
     }
     try {
         const data = jwt.verify(token, "h");
-        const rootUser = await Users.findOne({ _id: verifyToken._id });
+        const rootUser = await Users.findOne({ email: data.email });
         if (!rootUser) { throw new Error('User not found') }
         req.rootUser = rootUser;
         return next();
