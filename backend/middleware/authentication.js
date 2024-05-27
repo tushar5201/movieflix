@@ -21,18 +21,18 @@ const authentication = async (req, res, next) => {
     // }.
 
     const token = req.cookies.movieflixToken;
-    if (!token) {
-        return res.sendStatus(403);
-    }
-
-    const data = jwt.verify(token, "h");
-    if (data) {
-        const rootUser = await Users.findOne({ email: data.email });
-        if (!rootUser) { return res.sendStatus(410).send('User not found') }
-        req.rootUser = rootUser;
-        return next();
+    if (token) {
+        const data = jwt.verify(token, "h");
+        if (data) {
+            const rootUser = await Users.findOne({ email: data.email });
+            if (!rootUser) { return res.sendStatus(410).send('User not found') }
+            req.rootUser = rootUser;
+            return next();
+        } else {
+            return res.sendStatus(401)
+        }
     } else {
-        return res.sendStatus(401)
+        return res.sendStatus(403);
     }
 }
 
