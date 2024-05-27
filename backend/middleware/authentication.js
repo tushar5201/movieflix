@@ -24,7 +24,7 @@ const authentication = async (req, res, next) => {
     if (!token) {
         return res.sendStatus(403);
     }
-    try {
+    // try {
         const data = jwt.verify(token, "h");
         if(!data) {
             return res.sendStatus(450);
@@ -33,9 +33,9 @@ const authentication = async (req, res, next) => {
         if (!rootUser) { throw new Error('User not found') }
         req.rootUser = rootUser;
         return next();
-    } catch {
-        return res.sendStatus(401);
-    }
+    // } catch {
+    //     return res.sendStatus(401);
+    // }
 }
 
 export default authentication;
