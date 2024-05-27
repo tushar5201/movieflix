@@ -149,7 +149,7 @@ app.post('/sign_in', async (req, res) => {
                 .send(user)
         }
     } else {
-        res.status(401).send("Invalid credentials.")
+        res.status(410).send("Invalid credentials.")
     }
 })
 
