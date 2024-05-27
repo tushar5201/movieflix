@@ -21,7 +21,7 @@ const authentication = async (req, res, next) => {
     // }.
 
     const token = req.cookies.movieflixToken;
-    if (token === "") {
+    if (!token) {
         return res.sendStatus(403);
     }
 
