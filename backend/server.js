@@ -144,12 +144,14 @@ app.post('/sign_in', async (req, res) => {
             // console.log(token);
             const token = jwt.sign({ email: email }, "h");
             return res
-                .cookie('movieflixToken', token)
+                .cookie('movieflixToken', token, {
+                    sameSite:'None'
+                })
                 .status(200)
                 .send(user)
         }
     } else {
-        res.status(410).send("Invalid credentials.")
+        res.status(401).send("Invalid credentials.")
     }
 })
 
