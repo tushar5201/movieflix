@@ -21,12 +21,12 @@ const authentication = async (req, res, next) => {
     // }.
 
     const token = req.cookies.movieflixToken;
-    if (!token) {
+    if (token === "") {
         return res.sendStatus(403);
     }
     try {
         const data = jwt.verify(token, "h");
-        if(!data) {
+        if(data === null) {
             return res.sendStatus(450);
         }
         const rootUser = await Users.findOne({ email: data.email });
