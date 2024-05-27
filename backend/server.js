@@ -144,10 +144,7 @@ app.post('/sign_in', async (req, res) => {
             // console.log(token);
             const token = jwt.sign({ email: email }, "h");
             return res
-                .cookie('movieflixToken', token, {
-                    secure: false,
-                    maxAge: 63072000,
-                })
+                .cookie('movieflixToken', token)
                 .status(200)
                 .send(user)
         }
