@@ -146,7 +146,6 @@ app.post('/sign_in', async (req, res) => {
             return res
                 .cookie('movieflixToken', token, {
                     secure: false,
-                    httpOnly: true,
                     maxAge: 63072000,
                 })
                 .status(200)
