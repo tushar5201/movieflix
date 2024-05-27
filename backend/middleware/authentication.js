@@ -30,7 +30,7 @@ const authentication = async (req, res, next) => {
             return res.sendStatus(450);
         }
         const rootUser = await Users.findOne({ email: data.email });
-        if (!rootUser) { throw new Error('User not found') }
+        if (!rootUser) { return res.sendStatus(410).send('User not found') }
         req.rootUser = rootUser;
         return next();
     } catch {
