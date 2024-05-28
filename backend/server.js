@@ -140,7 +140,7 @@ app.post('/sign_in', async (req, res) => {
     if (user) {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (isMatch) {
-            const token = jwt.sign({ user }, "h");
+            const token = jwt.sign({ user }, process.env.SECRET_KEY);
             return res
                 .cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/", sameSite: "none", secure: true })
                 .status(200)
