@@ -142,7 +142,7 @@ app.post('/sign_in', async (req, res) => {
         if (isMatch) {
             const token = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
             res.cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/" });
-            return res.status(200).send(user, token);
+            return res.status(200).send({ email: user.email, isAdmin: user.isAdmin, token: token, name: user.name });
         }
     } else {
         res.status(401).send("Invalid credentials.")
