@@ -41,7 +41,7 @@ const authentication = async (req, res, next) => {
         const token = authorization.slice(7, authorization.length);
         jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
             if (err) {
-                res.status(401).send({ message: 'Invelid Token' })
+                res.status(405).send({ message: 'Invelid Token' })
             } else {
                 req.user = decode;
                 next();
