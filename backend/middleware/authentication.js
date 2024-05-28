@@ -21,20 +21,36 @@ const authentication = async (req, res, next) => {
     //     console.log(err);
     // }
 
-    const token = req.cookies.movieflixToken;
-    if (token) {
-        const data = await jwt.verify(token, process.env.SECRET_KEY);
-        if (data) {
-            const rootUser = await Users.findOne({ email: data.user.email });
-            if (!rootUser) { return res.sendStatus(410).send('User not found') }
-            req.rootUser = rootUser;
-            next();
-        } else {
-            return res.sendStatus(401)
-        }
+    // const token = req.cookies.movieflixToken;
+    // if (token) {
+    //     const data = await jwt.verify(token, process.env.SECRET_KEY);
+    //     if (data) {
+    //         const rootUser = await Users.findOne({ email: data.user.email });
+    //         if (!rootUser) { return res.sendStatus(410).send('User not found') }
+    //         req.rootUser = rootUser;
+    //         next();
+    //     } else {
+    //         return res.sendStatus(401)
+    //     }
+    // } else {
+    //     return res.sendStatus(403);
+    // }
+
+    const authorization = req.headers.authorization;
+    if (authorization) {
+        const token = authorization.slice(7, authorization.length);
+        jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
+            if (err) {
+                res.status(401).send({ message: 'Invelid Token' })
+            } else {
+                req.user = decode;
+                next();
+            }
+        })
     } else {
-        return res.sendStatus(403);
+        res.status(401).send({ message: 'No Token' });
     }
+
 }
 
 export default authentication;
