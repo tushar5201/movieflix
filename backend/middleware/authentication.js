@@ -18,7 +18,7 @@ const authentication = async (req, res, next) => {
     // } catch (err) {
     //     res.status(401).send('Unauthorized token.')
     //     console.log(err);
-    // }.
+    // }
 
     const token = req.cookies.movieflixToken;
     if (token) {
@@ -27,7 +27,7 @@ const authentication = async (req, res, next) => {
             const rootUser = await Users.findOne({ email: data.email });
             if (!rootUser) { return res.sendStatus(410).send('User not found') }
             req.rootUser = rootUser;
-            return next();
+            next();
         } else {
             return res.sendStatus(401)
         }
