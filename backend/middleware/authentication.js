@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import Users from "../models/userModel.js"
 
+
 const authentication = async (req, res, next) => {
     // try {
     //     const token = req.cookies.movieflixToken;
@@ -20,7 +21,7 @@ const authentication = async (req, res, next) => {
     //     console.log(err);
     // }
 
-    const token = req.session.movieflixToken;
+    const token = req.cookies.movieflixToken;
     if (token) {
         const data = jwt.verify(token, "h");
         if (data) {
