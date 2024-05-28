@@ -20,7 +20,8 @@ const authentication = async (req, res, next) => {
     //     console.log(err);
     // }
 
-    const token = localStorage.getItem(data.token);
+    const data = JSON.parse(localStorage.getItem("userInfo"))
+    const token = data.data.token;
     if (token) {
         const data = jwt.verify(token, process.env.SECRET_KEY);
         if (data) {
