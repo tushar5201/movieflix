@@ -25,7 +25,7 @@ import jwt from 'jsonwebtoken';
 const app = express();
 app.use(express.json())
 // app.use(cookieParser());
-app.use(session())
+app.use(session({secret: "My secret"}))
 
 app.use(cors(
     {
