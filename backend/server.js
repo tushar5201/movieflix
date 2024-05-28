@@ -140,14 +140,12 @@ app.post('/sign_in', async (req, res) => {
     if (user) {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (isMatch) {
-            jwt.sign({ email }, process.env.SECRET_KEY);
-            // res.cookie('movieflixToken', token);
             res.status(200).send({
                 _id: user._id,
                 name: user.name,
                 email: user.email,
                 isAdmin: user.isAdmin,
-                token: generateToken(user)
+                token: jwt.sign({ email: user.email }, process.env.SECRET_KEY, { expiresIn: '1d' })
             });
             return;
         }
