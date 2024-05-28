@@ -141,7 +141,7 @@ app.post('/sign_in', async (req, res) => {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (isMatch) {
             const token = jwt.sign({ email }, process.env.SECRET_KEY);
-            res.cookie('movieflixToken', token, {domain: "https://movieflix-zzmw.vercel.app/"});
+            res.cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/" });
             return res.status(200).send(user);
         }
     } else {

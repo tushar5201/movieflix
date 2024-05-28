@@ -21,7 +21,7 @@ const authentication = async (req, res, next) => {
     //     console.log(err);
     // }
 
-    const token = req.cookies;
+    const token = req.cookies.movieflixToken;
     if (token) {
         const data = jwt.verify(token, process.env.SECRET_KEY);
         if (data) {
