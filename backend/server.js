@@ -142,7 +142,7 @@ app.post('/sign_in', async (req, res) => {
         if (isMatch) {
             const token = jwt.sign({ user }, "h");
             return res
-                .cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/" })
+                .cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/", secure: true })
                 .status(200)
                 .send(user)
         }
