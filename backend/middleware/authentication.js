@@ -20,7 +20,7 @@ const authentication = async (req, res, next) => {
     //     console.log(err);
     // }
 
-    const token = req.cookies.movieflixToken.value;
+    const token = req.cookies.movieflixToken;
     if (token) {
         const data = jwt.verify(token, "h");
         if (data) {
