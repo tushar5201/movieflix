@@ -8,7 +8,7 @@ import nodemailer from 'nodemailer';
 import Otp from "./models/otpModel.js";
 import authentication from "./middleware/authentication.js";
 import cookieParser from "cookie-parser";
-import session from "express-session";
+// import session from "express-session";
 import Carousel from "./models/carouselModel.js";
 import { createCarousel, deleteCarousel, getCarouselImage, updateCarousel } from "./controllers/carouselController.js";
 import multer from "multer";
@@ -25,7 +25,7 @@ import jwt from 'jsonwebtoken';
 const app = express();
 app.use(express.json())
 app.use(cookieParser());
-app.use(session({ secret: "My secret" }))
+// app.use(session({ secret: "My secret" }))
 
 app.use(cors(
     {
@@ -146,7 +146,7 @@ app.post('/sign_in', async (req, res) => {
             // console.log(token);
             const token = jwt.sign({ email: email }, "h");
             return res
-                .cookie('movieflixToken', token, { path: "/admin" })
+                .cookie('movieflixToken', token)
                 .status(200)
                 .send(user)
             // req.session.movieflixToken = token
