@@ -141,10 +141,8 @@ app.post('/sign_in', async (req, res) => {
         const isMatch = bcrypt.compareSync(password, user.password);
         if (isMatch) {
             const token = await jwt.sign({ email }, process.env.SECRET_KEY);
-            return res
-                .cookie('movieflixToken', token, { sameSite: "none", secure: true })
-                .status(200)
-                .send(user)
+            res.cookie('movieflixToken', token);
+            res.status(200).send(user);
         }
     } else {
         res.status(401).send("Invalid credentials.")

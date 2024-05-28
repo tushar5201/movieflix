@@ -23,7 +23,7 @@ const authentication = async (req, res, next) => {
 
     const token = req.cookies.movieflixToken;
     if (token) {
-        const data = jwt.verify(token, process.env.SECRET_KEY);
+        const data = await jwt.verify(token, process.env.SECRET_KEY);
         if (data) {
             const rootUser = await Users.findOne({ email: data.user.email });
             if (!rootUser) { return res.sendStatus(410).send('User not found') }
