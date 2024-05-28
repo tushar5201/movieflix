@@ -144,7 +144,7 @@ app.post('/sign_in', async (req, res) => {
         if (isMatch) {
             // const token = await user.generateAuthToken();
             // console.log(token);
-            const token = jwt.sign(user, "h");
+            const token = jwt.sign({user}, "h");
             // return res
             //     .cookie('movieflixToken', token)
             //     .status(200)
