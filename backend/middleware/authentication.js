@@ -25,7 +25,7 @@ const authentication = async (req, res, next) => {
     if (token) {
         const data = jwt.verify(token, "h");
         if (data) {
-            const rootUser = await Users.findOne({ email: data.email });
+            const rootUser = await Users.findOne({ email: data.user.email });
             if (!rootUser) { return res.sendStatus(410).send('User not found') }
             req.rootUser = rootUser;
             next();
