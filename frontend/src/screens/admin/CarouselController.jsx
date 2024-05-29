@@ -84,17 +84,17 @@ export default function CarouselController() {
                         <div>
                             <Link to='/dashboard/create_carousel' className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
                             {
-                                carousel.map((carousel, i) => (
+                                carousel.map((slider, i) => (
                                     <div key={i}>
                                         <table>
                                             <tbody>
                                                 <tr>
                                                     <td style={{ textAlign: 'left' }}>
-                                                        <h2>{carousel.name}</h2>
+                                                        <h2>{slider.name}</h2>
                                                     </td>
                                                     <td style={{ textAlign: 'right' }}>
-                                                        <Link to={`/dashboard/update_carousel/${carousel._id}`} className='btn btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
-                                                        <Button className='btn btn-danger' onClick={() => handleDelete(carousel._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
+                                                        <Link to={`/dashboard/update_carousel/${slider._id}`} className='btn btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
+                                                        <Button className='btn btn-danger' onClick={() => handleDelete(slider._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
                                                     </td>
                                                 </tr>
                                             </tbody>
