@@ -82,7 +82,7 @@ export default function CarouselController() {
                     <hr />
                     {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
                         <>
-                            <Link to='/dashboard/create_carousel' className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
+                            <Link to='/dashboard/create_carousel' style={{width: "50px"}} className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
                             {
                                 carousel.map((slider) => (
                                     <table>
