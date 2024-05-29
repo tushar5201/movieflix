@@ -40,9 +40,10 @@ export default function CarouselController() {
     })
 
     const [{ loading, error, carousel }, dispatch] = useReducer(reducer, {
-        carousel: [],
         loading: true,
-        error: ''
+        error: '',
+        carousel: [],
+
     });
 
     useEffect(() => {
