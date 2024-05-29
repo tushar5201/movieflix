@@ -7,7 +7,7 @@ import LoadingBox from '../../components/LoadingBox'
 import MessageBox from '../../components/MessageBox'
 import { toast } from 'react-toastify'
 
-const reducer = (action, state) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
             return { ...state, loading: true }

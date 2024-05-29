@@ -8,7 +8,7 @@ import axios from "axios";
 import { getError } from "../../utils";
 import { toast } from "react-toastify";
 
-const reducer = (action, state) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
             return { ...state, loading: true }

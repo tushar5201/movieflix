@@ -7,7 +7,7 @@ import MessageBox from '../../components/MessageBox'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-const reducer = (action, state) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case 'FETCH_REQUEST':
             return { ...state, loading: true }
@@ -83,7 +83,7 @@ export default function CarouselController() {
                     {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
                         <>
                             <Link to='/dashboard/create_carousel' className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
-                            {/* {
+                            {
                                 carousel.map((slider) => (
                                     <table>
                                         <tbody>
@@ -99,7 +99,7 @@ export default function CarouselController() {
                                         </tbody>
                                     </table>
                                 ))
-                            } */}
+                            }
                         </>
                     )}
                 </Col>
