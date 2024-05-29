@@ -39,11 +39,10 @@ export default function CarouselController() {
         callAdminPage();
     })
 
-    const [{ loading, error, carousel }, dispatch] = useReducer(reducer, {
+    const [{ loading, error, carousel }, dispatch] = useReducer((reducer), {
         loading: true,
         error: '',
-        carousel: [],
-
+        carousel: []
     });
 
     useEffect(() => {
