@@ -11,7 +11,7 @@ export default function AdminView() {
 
     const callAdminPage = async () => {
         try {
-            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { credentials: 'include' });
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { withCredentials: true });
             const data = await res.data;
             setUserData(data);
             if (!res.status === 200) {

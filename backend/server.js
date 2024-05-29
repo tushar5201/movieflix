@@ -15,7 +15,6 @@ import path from 'path'
 import { createMovie, deleteMovie, updateMovie } from "./controllers/movieController.js";
 import { createCategory, deleteCategory } from "./controllers/caetgoryController.js";
 import Category from "./models/categoryModel.js";
-import crypto from 'crypto'
 import { createSeries } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
 import cors from "cors";
@@ -30,6 +29,7 @@ app.use(cors(
         origin: "https://movieflix-zzmw.vercel.app",
         methods: ["POST", "GET", "DELETE", "PUT"],
         credentials: true,
+        withCredentials: true,
         exposedHeaders: ["Set-Cookie"]
     }
 ))
