@@ -208,8 +208,10 @@ app.get('/admin', authentication, (req, res) => {
 
 app.get("/logout", (req, res) => {
     try {
-        res.clearCookie("jwtToken");
-        return res.status(200).send("successfully logout")        
+        return res
+            .clearCookie("jwtToken")
+            .status(200)
+            .send("successfully logout")
     } catch (error) {
         console.log(error);
     }

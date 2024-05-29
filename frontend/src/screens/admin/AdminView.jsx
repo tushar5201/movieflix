@@ -15,6 +15,7 @@ export default function AdminView() {
             const logout = await axios.get("https://movieflix-lyart.vercel.app/logout", { withCredentials: true });
             if(logout.status === 200) {
                 localStorage.removeItem('userInfo');
+                navigate("/signin")
                 toast.success("Logout Successfully.")
             }
         } catch (error) {
