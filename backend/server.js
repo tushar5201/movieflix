@@ -205,6 +205,10 @@ app.post('/send-otp', async (req, res) => {
 
 app.get('/admin', authentication, (req, res) => {
     res.send(req.rootUser);
+});
+
+app.get("/logout", (req, res) => {
+    res.clearCookie("jwtToken");
 })
 
 

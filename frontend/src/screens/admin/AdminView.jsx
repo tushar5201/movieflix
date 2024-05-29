@@ -3,11 +3,24 @@ import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import AdminMenu from '../../components/AdminMenu';
+import { toast } from 'react-toastify';
 
 export default function AdminView() {
 
     const navigate = useNavigate();
     const [userData, setUserData] = useState("");
+
+    const logoutHandler = async () => {
+        try {
+            const logout = await axios.get("https://movieflix-lyart.vercel.app/logout", { withCredentials: true });
+            if(logout.status === 200) {
+                localStorage.removeItem('userInfo');
+                toast.success("Logout Successfully.")
+            }
+        } catch (error) {
+
+        }
+    }
 
     const callAdminPage = async () => {
         try {
@@ -31,14 +44,14 @@ export default function AdminView() {
         <div className='container'>
             <div>
                 <p><Link to='/signup'>Create Account</Link></p>
-                <p>Log Out</p>
+                <p><Link onClick={logoutHandler}>Log Out</Link></p>
             </div>
             <Row className='container-fluid'>
                 <Col md={3}>
                     <AdminMenu />
                 </Col>
                 <Col md={9}>
-                    <Card style={{backgroundColor:"#000", width: "100%"}}>
+                    <Card style={{ backgroundColor: "#000", width: "100%" }}>
                         <h1>Welcome {userData.name}</h1>
                         <h1>Email: {userData.email}</h1>
                     </Card>
