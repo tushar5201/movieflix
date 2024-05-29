@@ -9,7 +9,7 @@ export default function SignInScreen() {
     const navigate = useNavigate();
     const { search } = useLocation();
     const redirectUrl = new URLSearchParams(search).get('redirect');
-    const redirect = redirectUrl ? redirectUrl : '/';
+    const redirect = redirectUrl ? redirectUrl : '/index';
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

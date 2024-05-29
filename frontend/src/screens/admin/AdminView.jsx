@@ -52,7 +52,7 @@ export default function AdminView() {
                     <AdminMenu />
                 </Col>
                 <Col md={9}>
-                    <Card style={{ backgroundColor: "#000", width: "90%" }}>
+                    <Card style={{ backgroundColor: "#000", width: "90%", marginLeft: "10%" }}>
                         <h1>Welcome {userData.name}</h1>
                         <h1>Email: {userData.email}</h1>
                     </Card>

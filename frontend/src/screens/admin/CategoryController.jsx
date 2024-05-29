@@ -29,7 +29,7 @@ export default function CategoryController() {
     const navigate = useNavigate();
     const callAdminPage = async (req, res) => {
         try {
-            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { credentials: 'include' });
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { withCredentials: true });
             if (!res.status === 200) {
                 const err = new Error(res.err)
                 throw err;
