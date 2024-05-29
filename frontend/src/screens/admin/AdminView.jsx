@@ -18,7 +18,7 @@ export default function AdminView() {
                 toast.success("Logout Successfully.")
             }
         } catch (error) {
-
+            console.log(error);
         }
     }
 
@@ -44,14 +44,14 @@ export default function AdminView() {
         <div className='container'>
             <div>
                 <p><Link to='/signup'>Create Account</Link></p>
-                <p><Link onClick={logoutHandler}>Log Out</Link></p>
+                <p onClick={logoutHandler}>Logout Out</p>
             </div>
             <Row className='container-fluid'>
                 <Col md={3}>
                     <AdminMenu />
                 </Col>
                 <Col md={9}>
-                    <Card style={{ backgroundColor: "#000", width: "100%" }}>
+                    <Card style={{ backgroundColor: "#000", width: "90%" }}>
                         <h1>Welcome {userData.name}</h1>
                         <h1>Email: {userData.email}</h1>
                     </Card>
