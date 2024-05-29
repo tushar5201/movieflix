@@ -156,7 +156,7 @@ app.post("/sign_in", async (req, res) => {
     if (user) {
         if (bcrypt.compareSync(password, user.password)) {
             const jwtToken = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
-            document.cookie = "jwtToken=" + jwtToken;
+            document.cookie = ("jwtToken=" + jwtToken + "; SameSite=None; Secure").split("; ");
             return res
                 // .cookie("jwtToken", jwtToken, { httpOnly: false, sameSite: "none", secure: true })
                 .status(200)
