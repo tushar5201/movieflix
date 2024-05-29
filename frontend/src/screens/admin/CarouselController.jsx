@@ -80,7 +80,7 @@ export default function CarouselController() {
                 <Col md={9}>
                     <h1>Carousel</h1>
                     <hr />
-                    {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
+                    {/* {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
                         <>
                             <Link to='/dashboard/create_carousel' className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
                             {
@@ -101,7 +101,7 @@ export default function CarouselController() {
                                 ))
                             }
                         </>
-                    )}
+                    )} */}
                 </Col>
             </Row>
         </div>
