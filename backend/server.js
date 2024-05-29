@@ -134,18 +134,34 @@ app.post('/sign_up', async (req, res) => {
     }
 })
 
-app.post('/sign_in', async (req, res) => {
+// app.post('/sign_in', async (req, res) => {
+//     const { email, password } = req.body;
+//     const user = await Users.findOne({ email: email });
+//     if (user) {
+//         const isMatch = bcrypt.compareSync(password, user.password);
+//         if (isMatch) {
+//             const token = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
+//             res.cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/" });
+//             return res.status(200).send({ email: user.email, isAdmin: user.isAdmin, token: token, name: user.name });
+//         }
+//     } else {
+//         res.status(401).send("Invalid credentials.")
+//     }
+// })
+
+app.post("/sign_in", async (req, res) => {
     const { email, password } = req.body;
     const user = await Users.findOne({ email: email });
     if (user) {
-        const isMatch = bcrypt.compareSync(password, user.password);
-        if (isMatch) {
-            const token = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
-            res.cookie('movieflixToken', token, { domain: "https://movieflix-zzmw.vercel.app/" });
-            return res.status(200).send({ email: user.email, isAdmin: user.isAdmin, token: token, name: user.name });
+        if (bcrypt.compareSync(password, user.password)) {
+            const jwtToken = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
+            return res
+                .cookie("jwtToken", jwtToken)
+                .status(200)
+                .send({email: user.email, isAdmin: user.isAdmin, name: user.name});
+        } else {
+            res.status(401).send("Invalid Credentials")
         }
-    } else {
-        res.status(401).send("Invalid credentials.")
     }
 })
 
