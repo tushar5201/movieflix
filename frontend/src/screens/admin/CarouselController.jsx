@@ -80,7 +80,7 @@ export default function CarouselController() {
                 <Col md={9}>
                     <h1>Carousel</h1>
                     <hr />
-                    {/* {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
+                    {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
                         <>
                             <Link to='/dashboard/create_carousel' className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
                             {
@@ -88,20 +88,20 @@ export default function CarouselController() {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td style={{ textAlign: 'left' }}>
+                                                {/* <td style={{ textAlign: 'left' }}>
                                                     <h2>{slider.name}</h2>
                                                 </td>
                                                 <td style={{ textAlign: 'right' }}>
                                                     <Link to={`/dashboard/update_carousel/${slider._id}`} className='btn btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
                                                     <Button className='btn btn-danger' onClick={() => handleDelete(slider._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
-                                                </td>
+                                                </td> */}
                                             </tr>
                                         </tbody>
                                     </table>
                                 ))
                             }
                         </>
-                    )} */}
+                    )}
                 </Col>
             </Row>
         </div>
