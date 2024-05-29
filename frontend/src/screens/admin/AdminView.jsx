@@ -38,7 +38,7 @@ export default function AdminView() {
                     <AdminMenu />
                 </Col>
                 <Col md={9}>
-                    <Card style={{backgroundColor:"#000"}}>
+                    <Card style={{backgroundColor:"#000", width: "100%"}}>
                         <h1>Welcome {userData.name}</h1>
                         <h1>Email: {userData.email}</h1>
                     </Card>
