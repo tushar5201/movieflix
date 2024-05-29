@@ -25,7 +25,7 @@ export default function CarouselController() {
     const navigate = useNavigate()
     const callAdminPage = async (req, res) => {
         try {
-            const res = await axios.get('https://movieflix-lyart.vercel.app/admin',{ withCredentials: true });
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { withCredentials: true });
             if (!res.status === 200) {
                 const err = new Error(res.err)
                 throw err;
@@ -49,10 +49,10 @@ export default function CarouselController() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const res = await axios.get('https://movieflix-lyart.vercel.app/api/carousel', { withCredentials: true });
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/carousel');
                 dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
-            } catch (error) {
-                dispatch({ type: 'FETCH_FAIL', payload: error.message })
+            } catch (err) {
+                dispatch({ type: 'FETCH_FAIL', payload: err.message })
             }
         }
         fetchData();
@@ -81,28 +81,26 @@ export default function CarouselController() {
                     <h1>Carousel</h1>
                     <hr />
                     {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
-                        <div>
+                        <>
                             <Link to='/dashboard/create_carousel' className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
                             {
-                                carousel.map((slider, i) => (
-                                    <div key={i}>
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td style={{ textAlign: 'left' }}>
-                                                        <h2>{slider.name}</h2>
-                                                    </td>
-                                                    <td style={{ textAlign: 'right' }}>
-                                                        <Link to={`/dashboard/update_carousel/${slider._id}`} className='btn btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
-                                                        <Button className='btn btn-danger' onClick={() => handleDelete(slider._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                carousel.map((slider) => (
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td style={{ textAlign: 'left' }}>
+                                                    <h2>{slider.name}</h2>
+                                                </td>
+                                                <td style={{ textAlign: 'right' }}>
+                                                    <Link to={`/dashboard/update_carousel/${slider._id}`} className='btn btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
+                                                    <Button className='btn btn-danger' onClick={() => handleDelete(slider._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 ))
                             }
-                        </div>
+                        </>
                     )}
                 </Col>
             </Row>
@@ -202,7 +200,7 @@ export const UpdateCarousel = () => {
             carouselData.append('id', id);
 
             const res = await axios.put('/admin/update-carousel', carouselData)
-            if(res.status === 200) {
+            if (res.status === 200) {
                 toast.success('Carousel updated successfully.')
                 navigate('/dashboard/carousel')
             } else if (res.status === 401) {
