@@ -216,6 +216,11 @@ h6 {
   font-size: 1.2rem;
 }
 
+.icons {
+  width: 50px;
+  border-radius: 10px;
+}
+
 .admin-input :focus {
   outline: none;
 }

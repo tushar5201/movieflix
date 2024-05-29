@@ -82,7 +82,7 @@ export default function CarouselController() {
                     <hr />
                     {loading ? <LoadingBox /> : error ? <MessageBox>{error}</MessageBox> : (
                         <>
-                            <Link to='/dashboard/create_carousel' style={{width: "50px"}} className='btn btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
+                            <Link to='/dashboard/create_carousel' style={{width: "50px"}} className='btn icons btn-primary'><i className='fa-solid fa-plus'></i></Link>{' '}
                             {
                                 carousel.map((slider) => (
                                     <table>
@@ -92,8 +92,8 @@ export default function CarouselController() {
                                                     <h2>{slider.name}</h2>
                                                 </td>
                                                 <td style={{ textAlign: 'right' }}>
-                                                    <Link to={`/dashboard/update_carousel/${slider._id}`} className='btn btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
-                                                    <Button className='btn btn-danger' onClick={() => handleDelete(slider._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
+                                                    <Link to={`/dashboard/update_carousel/${slider._id}`} className='btn icons btn-primary'><i className="fa-solid fa-pen"></i></Link>{' '}
+                                                    <Button className='btn icons btn-danger' onClick={() => handleDelete(slider._id)}><i className="fa-solid fa-trash"></i></Button>{' '}
                                                 </td>
                                             </tr>
                                         </tbody>
