@@ -49,8 +49,8 @@ export default function CarouselController() {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const carousel = await axios.get('https://movieflix-lyart.vercel.app/api/carousel');
-                dispatch({ type: 'FETCH_SUCCESS', payload: carousel.data })
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/carousel');
+                dispatch({ type: 'FETCH_SUCCESS', payload: res.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })
             }
