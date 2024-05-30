@@ -21,6 +21,79 @@ export const createSeries = async (req, res) => {
     }
 }
 
+export const updateSeries = async (req, res) => {
+    try {
+        let { tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
+        // const image = req.file;
+        const exist = await Series.findById(id);
+        if (exist) {
+            if (name === '') {
+                name = exist.name
+            }
+            if (image === '') {
+                image = exist.image
+            }
+            if (story === '') {
+                story = exist.story
+            }
+            if (cast === '') {
+                cast = exist.cast
+            }
+            if (release === '') {
+                release = exist.realease
+            }
+            if (director === '') {
+                director = exist.director
+            }
+            if (distributor === '') {
+                distributor = exist.distributor
+            }
+            if (rated === '') {
+                rated = exist.rated
+            }
+            if (genre === '') {
+                genre = exist.genre
+            }
+            if (imdb === '') {
+                imdb = exist.imdb
+            }
+            if (year === '') {
+                year = exist.year
+            }
+            if (category === '') {
+                category = exist.category
+            }
+            if (tmdb === '') {
+                tmdb = exist.tmdb
+            }
+            if (sande1 === "") {
+                sande1 = exist.sande1
+            }
+            const seasonsandepisodes = JSON.parse(sande1);
+            const series = await Series.findByIdAndUpdate(id, { tmdb, name, story, cast, director, image, release, distributor, rated, genre, imdb, year, category, $push: {seasonsandepisodes} }).save();
+
+            res.status(201).send({
+                success: true,
+                message: 'series updated.',
+                series
+            });
+        } else {
+            res.status(405).send({
+                success: false,
+                message: 'err in updating',
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(401).send({
+            success: false,
+            message: 'err in updating',
+            err
+        })
+    }
+
+}
+
 // export const seriesImageController = async (req, res) => {
 //     try {
 //         const series = await Series.findById(req.params.imgid).select('image');

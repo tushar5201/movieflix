@@ -15,7 +15,7 @@ import path from 'path'
 import { createMovie, deleteMovie, updateMovie } from "./controllers/movieController.js";
 import { createCategory, deleteCategory } from "./controllers/caetgoryController.js";
 import Category from "./models/categoryModel.js";
-import { createSeries } from "./controllers/seriesController.js";
+import { createSeries, updateSeries } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
 import cors from "cors";
 import jwt from 'jsonwebtoken';
@@ -234,6 +234,7 @@ app.put('/admin/update-movie', authentication, updateMovie);
 
 // Series Routes
 app.post('/admin/create-series', authentication, createSeries);
+app.put('/admin/update-series', authentication, updateSeries);
 // app.get('/admin/get-series-image/:imgid', seriesImageController);
 
 //category Route

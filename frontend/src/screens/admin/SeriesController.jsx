@@ -3,7 +3,7 @@ import AdminMenu from "../../components/AdminMenu";
 import { useEffect, useReducer, useState } from "react";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { getError } from "../../utils";
 import { toast } from "react-toastify";
@@ -227,5 +227,174 @@ export function CreateSeries() {
                 </Col>
             </Row>
         </div>
+    )
+}
+
+export function UpdateSeries() {
+
+    const [{ loading, error, series }, dispatch] = useReducer((reducer), {
+        loading: true,
+        error: "",
+        series: []
+    })
+
+    const navigate = useNavigate();
+    const [name, setName] = useState('');
+    const [image, setImage] = useState('');
+    const [story, setStory] = useState('');
+    const [cast, setCast] = useState('');
+    const [director, setDirector] = useState('');
+    const [release, setRelease] = useState('');
+    const [distributor, setDistributor] = useState('');
+    const [rated, setRated] = useState('');
+    const [genre, setGenre] = useState('');
+    const [imdb, setImdb] = useState('');
+    const [year, setYear] = useState('');
+    const [category, setCategory] = useState('');
+    const [tmdb, setTmdb] = useState('');
+    const [sande, setSande] = useState([{
+        sno: null,
+        eno: null
+    }])
+
+    const { id } = useParams();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const sande1 = JSON.stringify(sande);
+            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
+            if (res.status === 201) {
+                toast.success('Series updated successfully.');
+                navigate('/dashboard/series');
+            } else if (res.status === 405) {
+                toast.error("Series doesn't Exist");
+            } else if (res.status === 401) {
+                toast.error("Error in updating.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const [{ categories }, dispatch1] = useReducer((reducer1), {
+        categories: []
+    });
+
+    const handleChange = (e, i) => {
+        const { name, value } = e.target;
+        const changeVal = [...sande];
+        changeVal[i][name] = value;
+        setSande(changeVal);
+    }
+
+    const handleDelete = async (id, menuId) => {
+        const res = await fetch('https://movieflix-lyart.vercel.app/admin/delete-sande', {
+            method: 'DELETE',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ id, menuId })
+        });
+        if (res.status === 200) {
+            console.log('li deleted');
+            window.location.reload(true)
+        } else {
+            console.log('not Deleted');
+        }
+    }
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            dispatch1({ type: 'FETCH_REQUEST' });
+            try {
+                const res = await axios.get('https://movieflix-lyart.vercel.app/api/categories');
+                dispatch1({ type: 'FETCH_SUCCESS', payload: res.data });
+            } catch (error) {
+                dispatch1({ type: 'FETCH_FAILED', payload: getError(error) });
+            }
+        }
+        fetchCategories();
+
+        const fetchData = async () => {
+            dispatch({ type: 'FETCH_REQUEST' });
+            try {
+                const about = await axios.get('https://movieflix-lyart.vercel.app/api/series');
+                dispatch({ type: 'FETCH_SUCCESS', payload: about.data })
+            } catch (error) {
+                dispatch({ type: 'FETCH_FAIL', payload: error.message })
+            }
+        }
+        fetchData();
+    }, [])
+
+    return (
+        <div className='container m-3 p-3'>
+            <Row className='conatiner-fluid'>
+                <Col md={3}>
+                    <AdminMenu />
+                </Col>
+                <Col md={9}>
+                    <h1>Update Series</h1>
+                    <hr />
+                    {loading ? (<LoadingBox />) : error ? (<MessageBox>{error.message}</MessageBox>) : (
+                        series.map((series) => (
+                            series._id === id && (
+                                <Form onSubmit={handleSubmit}>
+                                    <input type="text" name='name' defaultValue={series.name} className='admin-input' placeholder='Name' onChange={(e) => setName(e.target.value)} /><br />
+                                    <input type="text" name='image' defaultValue={series.image} className='admin-input' placeholder='Image' onChange={(e) => setImage(e.target.value)} /><br />
+                                    <input type="text" name='story' defaultValue={series.story} className='admin-input' placeholder='Story' onChange={(e) => setStory(e.target.value)} /><br />
+                                    <input type="text" name='cast' defaultValue={series.cast} className='admin-input' placeholder='Cast' onChange={(e) => setCast(e.target.value)} /><br />
+                                    <input type="text" name='director' defaultValue={series.director} className='admin-input' placeholder='Director' onChange={(e) => setDirector(e.target.value)} /><br />
+                                    <input type="text" name='release' defaultValue={series.release} className='admin-input' placeholder='Release' onChange={(e) => setRelease(e.target.value)} /><br />
+                                    <input type="text" name='distributor' defaultValue={series.distributor} className='admin-input' placeholder='Distributor' onChange={(e) => setDistributor(e.target.value)} /><br />
+                                    <input type="text" name='rated' defaultValue={series.rated} className='admin-input' placeholder='Rated' onChange={(e) => setRated(e.target.value)} /><br />
+                                    <input type="text" name='genre' defaultValue={series.genre} className='admin-input' placeholder='Genre' onChange={(e) => setGenre(e.target.value)} /><br />
+                                    <input type="text" name='imdb' defaultValue={series.imdb} className='admin-input' placeholder='Imdb' onChange={(e) => setImdb(e.target.value)} /><br />
+                                    <input type="text" name='year' defaultValue={series.year} className='admin-input' placeholder='Year' onChange={(e) => setYear(e.target.value)} /><br />
+                                    <input type="text" name='tmdb' defaultValue={series.tmdb} className='admin-input' placeholder='TMDB' onChange={(e) => setTmdb(e.target.value)} /><br />
+
+                                    <select onChange={(e) => setCategory(e.target.selectedOptions[0].innerText)} className='admin-input'>
+                                        {
+                                            categories.map((cat) => (
+                                                <option defaultValue={series.category} value={cat.name}>{cat.name}</option>
+                                            ))
+                                        }
+                                    </select>
+
+                                    {
+                                        series.seasonsandepisodes.map((sande, i) => (
+                                            <div key={i}>
+                                                <Row>
+                                                    <Col md={11}>
+                                                        <input name="sno" value={sande.name} onChange={(e) => handleChange(e, i)} placeholder='Season No' className="admin-input" />
+                                                        <input name="eno" value={sande.path} onChange={(e) => handleChange(e, i)} placeholder='Total Episodes' className="admin-input" /><br />
+                                                    </Col>
+                                                    <Col md={1}>
+                                                        <Button className='btn btn-danger' onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
+                                                    </Col>
+                                                </Row>
+                                            </div>
+                                        ))
+                                    }
+
+                                    {sande.map((val, i) => (
+                                        <div>
+                                            <input key={i} value={val.sno} type="number" name="sno" id="sno" className="admin-input" placeholder="Season No" onChange={(e) => handleChange(e, i)} />
+                                            <input key={i} value={val.eno} type="number" name="eno" id="eno" className="admin-input" placeholder="Total Episodes" onChange={(e) => handleChange(e, i)} />
+                                        </div>
+                                    ))}
+                                    <Button className="btn btn-primary" onClick={() => setSande([...sande, { sno: null, eno: null }])}>
+                                        <i className="fa fa-plus"></i>
+                                    </Button>
+                                    <br /><br />
+
+                                    <Button type='submit'>Update Series</Button>
+                                </Form>
+                            )
+                        ))
+                    )}
+                </Col>
+            </Row>
+        </div>
+
     )
 }

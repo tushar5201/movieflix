@@ -11,7 +11,7 @@ import CarouselController, { CreateCarousel, UpdateCarousel } from "./screens/ad
 import MovieController, { CreateMovie, UpdateMovie } from "./screens/admin/MovieController";
 import CategoryController, { CreateCategory } from "./screens/admin/CategoryController";
 import FilterScreen from "./screens/FilterScreen";
-import SeriesController, { CreateSeries } from "./screens/admin/SeriesController";
+import SeriesController, { CreateSeries, UpdateSeries } from "./screens/admin/SeriesController";
 import { SeriesScreen } from "./screens/SeriesScreen";
 import Pricing from "./components/Pricing";
 import { VideoScreen } from "./screens/VideoScreen";
@@ -45,6 +45,7 @@ function App() {
 
             <Route path="/dashboard/series" element={<SeriesController />}></Route>
             <Route path='/dashboard/create_series' element={<CreateSeries />}></Route>
+            <Route path='/dashboard/update_series/:id' element={<UpdateSeries />}></Route>
 
             <Route path='/dashboard/categories' element={<CategoryController />}></Route>
             <Route path='/dashboard/create_category' element={<CreateCategory />}></Route>
