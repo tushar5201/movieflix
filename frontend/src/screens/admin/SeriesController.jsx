@@ -158,7 +158,7 @@ export function CreateSeries() {
             // seriesForm.append("category", category);
             // seriesForm.append("sande", sande1);
 
-            const res = await axios.post("https://movieflix-lyart.vercel.app/admin/create-series", { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 });
+            const res = await axios.post("https://movieflix-lyart.vercel.app/admin/create-series", { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
             if (res.status === 200) {
                 toast.success("Series Added Successfully.");
                 navigate("/dashboard/series");
