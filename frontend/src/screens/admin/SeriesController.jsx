@@ -247,8 +247,8 @@ export function UpdateSeries() {
     const [category, setCategory] = useState('');
     const [tmdb, setTmdb] = useState('');
     const [sande, setSande] = useState([{
-        sno: null,
-        eno: null
+        sno: "",
+        eno: ""
     }])
 
     const { id } = useParams();
