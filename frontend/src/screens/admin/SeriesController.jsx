@@ -216,11 +216,7 @@ export function CreateSeries() {
                             <i className="fa fa-plus"></i>
                         </Button>
                         <br /><br />
-                        {uploaded && (
-                            <div className="progress mt-2">
-                                <div className="progress-bar" aria-valuenow={uploaded} aria-valuemin='0' aria-valuemax='100' style={{ width: `${uploaded}%` }}>{`${uploaded}%`}</div>
-                            </div>
-                        )}
+                    
                         <Button type='submit'>Create Series</Button>
 
                     </Form>
