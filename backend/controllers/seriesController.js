@@ -24,7 +24,7 @@ export const createSeries = async (req, res) => {
 export const updateSeries = async (req, res) => {
     try {
         let { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
-        // const image = req.file;
+        let seasonsandepisodes = JSON.parse(sande1);
         const exist = await Series.findById(id);
         if (exist) {
             if (name === '') {
@@ -66,10 +66,9 @@ export const updateSeries = async (req, res) => {
             if (tmdb === '') {
                 tmdb = exist.tmdb
             }
-            if (sande1 === "") {
-                sande1 = exist.sande1
+            if (seasonsandepisodes === "") {
+                seasonsandepisodes = exist.seasonsandepisodes
             }
-            const seasonsandepisodes = JSON.parse(sande1);
             const series = await Series.findByIdAndUpdate(id, { tmdb, name, story, cast, director, image, release, distributor, rated, genre, imdb, year, category, $push: {seasonsandepisodes} }).save();
 
             res.status(201).send({
