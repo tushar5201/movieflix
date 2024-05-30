@@ -40,7 +40,7 @@ export const updateSeries = async (req, res) => {
                 cast = exist.cast
             }
             if (release === '') {
-                release = exist.realease
+                release = exist.release
             }
             if (director === '') {
                 director = exist.director

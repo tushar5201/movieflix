@@ -112,8 +112,6 @@ export function CreateSeries() {
         eno: null
     }])
 
-    const [uploaded, setUploaded] = useState();
-
     const [{ categories }, dispatch1] = useReducer((reducer1), {
         categories: []
     })
