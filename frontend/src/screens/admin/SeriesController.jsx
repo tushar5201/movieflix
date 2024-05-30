@@ -149,6 +149,7 @@ export function CreateSeries() {
             seriesForm.append("cast", cast);
             seriesForm.append("director", director);
             seriesForm.append("release", release);
+            seriesForm.append("image", image);
             seriesForm.append("distributor", distributor);
             seriesForm.append("rated", rated);
             seriesForm.append("genre", genre);
@@ -156,7 +157,6 @@ export function CreateSeries() {
             seriesForm.append("year", year);
             seriesForm.append("category", category);
             seriesForm.append("sande", sande1);
-            seriesForm.append("image", image);
 
             const res = await axios.post("https://movieflix-lyart.vercel.app/admin/create-series", seriesForm);
             if (res.status === 200) {
