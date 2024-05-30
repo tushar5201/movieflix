@@ -143,7 +143,7 @@ export const CreateCarousel = () => {
                 <Col md={9}>
                     <h1>Create Carousel</h1>
                     <hr />
-                    <Form onSubmit={handleSubmit} style={{padding: "2%"}}>
+                    <Form onSubmit={handleSubmit}>
                         <input type='text' name='name' value={name} className='admin-input' placeholder='Name' onChange={(e) => setName(e.target.value)} /><br />
                         <input type='file' name='image' className='admin-input' placeholder='Name' onChange={(e) => setImage(e.target.files[0])} /><br />
                         {image && (
