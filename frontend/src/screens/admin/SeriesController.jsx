@@ -243,12 +243,12 @@ export function UpdateSeries() {
     const [rated, setRated] = useState('');
     const [genre, setGenre] = useState('');
     const [imdb, setImdb] = useState('');
-    const [year, setYear] = useState('');
+    const [year, setYear] = useState(null);
     const [category, setCategory] = useState('');
     const [tmdb, setTmdb] = useState('');
     const [seasonsandepisodes, setSeasonsandepisodes] = useState([{
-        sno: "",
-        eno: ""
+        sno: null,
+        eno: null
     }])
 
     const { id } = useParams();

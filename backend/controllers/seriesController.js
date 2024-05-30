@@ -24,7 +24,7 @@ export const createSeries = async (req, res) => {
 export const updateSeries = async (req, res) => {
     try {
         let { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes } = req.body;
-        const sande = [{sno: "", eno: ""}]
+        const sande = [{sno: null, eno: null}]
         const exist = await Series.findById(id);
         if (exist) {
             if (name === '') {
@@ -57,7 +57,7 @@ export const updateSeries = async (req, res) => {
             if (imdb === '') {
                 imdb = exist.imdb
             }
-            if (year === '') {
+            if (year === null) {
                 year = exist.year
             }
             if (category === '') {
