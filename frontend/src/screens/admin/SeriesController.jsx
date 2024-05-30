@@ -263,7 +263,7 @@ export function UpdateSeries() {
         e.preventDefault();
         try {
             const sande1 = JSON.stringify(sande);
-            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
+            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
             if (res.status === 201) {
                 toast.success('Series updated successfully.');
                 navigate('/dashboard/series');
@@ -369,7 +369,7 @@ export function UpdateSeries() {
                                                         <input name="eno" value={sande.eno} onChange={(e) => handleChange(e, i)} placeholder='Total Episodes' className="admin-input" /><br />
                                                     </Col>
                                                     <Col md={1}>
-                                                        <Button className='btn btn-danger' style={{marginTop: "2%"}} onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
+                                                        <Button className='btn btn-danger' style={{marginTop: "50px"}} onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
                                                     </Col>
                                                 </Row>
                                             </div>
