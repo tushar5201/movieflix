@@ -140,7 +140,7 @@ export const CreateCarousel = () => {
                 <Col md={3}>
                     <AdminMenu />
                 </Col>
-                <Col md={9} style={{marginLeft: "5%"}}>
+                <Col md={9} style={{marginLeft: "2%"}}>
                     <h1>Create Carousel</h1>
                     <hr />
                     <Form onSubmit={handleSubmit}>
