@@ -3,8 +3,11 @@ import { Spinner } from 'react-bootstrap'
 
 export default function LoadingBox() {
   return (
-    <Spinner animation='border' variant='danger' role='status'>
+    <div>
+      {/* <Spinner animation='border' variant='danger' role='status'>
         <span className='visually-hidden'>Loading...</span>
-    </Spinner>
+      </Spinner> */}
+      <div class="lds-hourglass"></div>
+    </div>
   )
 }
