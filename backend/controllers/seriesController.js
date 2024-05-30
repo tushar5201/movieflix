@@ -57,7 +57,7 @@ export const updateSeries = async (req, res) => {
             if (imdb === '') {
                 imdb = exist.imdb
             }
-            if (year === null) {
+            if (year === "") {
                 year = exist.year
             }
             if (category === '') {
