@@ -246,7 +246,7 @@ export function UpdateSeries() {
     const [year, setYear] = useState('');
     const [category, setCategory] = useState('');
     const [tmdb, setTmdb] = useState('');
-    const [sande, setSande] = useState([{
+    const [seasonsandepisodes, setSeasonsandepisodes] = useState([{
         sno: "",
         eno: ""
     }])
@@ -256,8 +256,7 @@ export function UpdateSeries() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const sande1 = JSON.stringify(sande);
-            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
+            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes }, { withCredentials: true });
             if (res.status === 201) {
                 toast.success('Series updated successfully.');
                 navigate('/dashboard/series');
@@ -277,9 +276,9 @@ export function UpdateSeries() {
 
     const handleChange = (e, i) => {
         const { name, value } = e.target;
-        const changeVal = [...sande];
+        const changeVal = [...seasonsandepisodes];
         changeVal[i][name] = value;
-        setSande(changeVal);
+        setSeasonsandepisodes(changeVal);
     }
 
     const handleDelete = async (id, menuId) => {
@@ -370,13 +369,13 @@ export function UpdateSeries() {
                                         ))
                                     }
 
-                                    {sande.map((val, i) => (
+                                    {seasonsandepisodes.map((val, i) => (
                                         <div>
                                             <input key={i} value={val.sno} type="number" name="sno" id="sno" className="admin-input" placeholder="Season No" onChange={(e) => handleChange(e, i)} />
                                             <input key={i} value={val.eno} type="number" name="eno" id="eno" className="admin-input" placeholder="Total Episodes" onChange={(e) => handleChange(e, i)} />
                                         </div>
                                     ))}
-                                    <Button className="btn btn-primary" onClick={() => setSande([...sande, { sno: null, eno: null }])}>
+                                    <Button className="btn btn-primary" onClick={() => setSeasonsandepisodes([...seasonsandepisodes, { sno: null, eno: null }])}>
                                         <i className="fa fa-plus"></i>
                                     </Button>
                                     <br /><br />
