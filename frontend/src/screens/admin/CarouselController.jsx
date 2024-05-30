@@ -230,7 +230,7 @@ export const UpdateCarousel = () => {
                                     <div>
                                         {id === carousel._id && (
                                             <Form onSubmit={() => handleSubmit(carousel._id)}>
-                                                <img src={`/admin/get-carousel-image/${carousel._id}`} alt="carousel-img" height={200} /><br /><br />
+                                                <img src={`https://movieflix-lyart.vercel.app/admin/get-carousel-image/${carousel._id}`} alt="carousel-img" height={200} /><br /><br />
 
                                                 <label>Image : </label>
                                                 <input type="file" name='image' className='admin-input' onChange={(e) => setImage(e.target.files[0])} /><br /><br />
