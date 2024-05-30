@@ -352,9 +352,9 @@ th {
 }
 
 .btn {
-  width: 100%;
+  /* width: 100%; */
   /* background-color: #E50914; */
-  border-radius: 0;
+  /* border-radius: 0; */
 }
 
 /* End Pricing */
