@@ -70,10 +70,10 @@ export default function SeriesController() {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td style={{textAlign: 'left'}}>
+                                                <td style={{ textAlign: 'left' }}>
                                                     <h2>{ser.name}</h2>
                                                 </td>
-                                                <td style={{textAlign: 'right'}}>
+                                                <td style={{ textAlign: 'right' }}>
                                                     <Link to={`/dashboard/update_series/${ser._id}`} className="btn btn-primary"><i className="fa-solid fa-pen"></i></Link> {' '}
                                                     <Button className="btn btn-danger"><i className="fa-solid fa-trash"></i></Button>
                                                 </td>
@@ -142,23 +142,23 @@ export function CreateSeries() {
         try {
             const sande1 = JSON.stringify(sande);
 
-            const seriesForm = new FormData();
-            seriesForm.append("tmdb", tmdb);
-            seriesForm.append("name", name);
-            seriesForm.append("story", story);
-            seriesForm.append("cast", cast);
-            seriesForm.append("director", director);
-            seriesForm.append("release", release);
-            seriesForm.append("image", image);
-            seriesForm.append("distributor", distributor);
-            seriesForm.append("rated", rated);
-            seriesForm.append("genre", genre);
-            seriesForm.append("imdb", imdb);
-            seriesForm.append("year", year);
-            seriesForm.append("category", category);
-            seriesForm.append("sande", sande1);
+            // const seriesForm = new FormData();
+            // seriesForm.append("tmdb", tmdb);
+            // seriesForm.append("name", name);
+            // seriesForm.append("story", story);
+            // seriesForm.append("cast", cast);
+            // seriesForm.append("director", director);
+            // seriesForm.append("release", release);
+            // seriesForm.append("image", image);
+            // seriesForm.append("distributor", distributor);
+            // seriesForm.append("rated", rated);
+            // seriesForm.append("genre", genre);
+            // seriesForm.append("imdb", imdb);
+            // seriesForm.append("year", year);
+            // seriesForm.append("category", category);
+            // seriesForm.append("sande", sande1);
 
-            const res = await axios.post("https://movieflix-lyart.vercel.app/admin/create-series", seriesForm);
+            const res = await axios.post("https://movieflix-lyart.vercel.app/admin/create-series", { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 });
             if (res.status === 200) {
                 toast.success("Series Added Successfully.");
                 navigate("/dashboard/series");
