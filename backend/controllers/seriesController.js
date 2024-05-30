@@ -2,7 +2,7 @@ import Series from "../models/seriesModel.js";
 
 export const createSeries = async (req, res) => {
     try {
-        const { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
+        const { tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
         const seasonsandepisodes = JSON.parse(sande1);
         // console.log(seasonsandepisodes);
         const series = await new Series({ tmdb, name, story, cast, director, image, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes }).save();
