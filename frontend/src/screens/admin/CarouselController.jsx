@@ -144,15 +144,15 @@ export const CreateCarousel = () => {
                     <h1>Create Carousel</h1>
                     <hr />
                     <Form onSubmit={handleSubmit}>
-                        <input type='text' name='name' value={name} className='input form-control' placeholder='Name' onChange={(e) => setName(e.target.value)} /><br />
-                        <input type='file' name='image' className='input form-control' placeholder='Name' onChange={(e) => setImage(e.target.files[0])} /><br />
+                        <input type='text' name='name' value={name} className='admin-input' placeholder='Name' onChange={(e) => setName(e.target.value)} /><br />
+                        <input type='file' name='image' className='admin-input' placeholder='Name' onChange={(e) => setImage(e.target.files[0])} /><br />
                         {image && (
                             <div className="text-center">
                                 <img src={URL.createObjectURL(image)} alt='carousel' height={'200px'} />
                             </div>
                         )}
-                        <input type='text' name='story' value={story} className='input form-control' placeholder='Story' onChange={(e) => setStory(e.target.value)} /><br />
-                        <input type='text' name='link' value={link} className='input form-control' placeholder='link' onChange={(e) => setLink(e.target.value)} /><br /><br />
+                        <input type='text' name='story' value={story} className='admin-input' placeholder='Story' onChange={(e) => setStory(e.target.value)} /><br />
+                        <input type='text' name='link' value={link} className='admin-input' placeholder='link' onChange={(e) => setLink(e.target.value)} /><br /><br />
 
                         <Button type='submit'>Create Carousel</Button>
 
