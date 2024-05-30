@@ -23,7 +23,7 @@ export const createSeries = async (req, res) => {
 
 export const updateSeries = async (req, res) => {
     try {
-        let { tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
+        let { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
         // const image = req.file;
         const exist = await Series.findById(id);
         if (exist) {

@@ -263,7 +263,7 @@ export function UpdateSeries() {
         e.preventDefault();
         try {
             const sande1 = JSON.stringify(sande);
-            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
+            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, sande1 }, { withCredentials: true });
             if (res.status === 201) {
                 toast.success('Series updated successfully.');
                 navigate('/dashboard/series');
