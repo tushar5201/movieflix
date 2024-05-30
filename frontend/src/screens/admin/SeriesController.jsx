@@ -365,11 +365,11 @@ export function UpdateSeries() {
                                             <div key={i}>
                                                 <Row>
                                                     <Col md={11}>
-                                                        <input name="sno" value={sande.name} onChange={(e) => handleChange(e, i)} placeholder='Season No' className="admin-input" />
-                                                        <input name="eno" value={sande.path} onChange={(e) => handleChange(e, i)} placeholder='Total Episodes' className="admin-input" /><br />
+                                                        <input name="sno" value={sande.sno} onChange={(e) => handleChange(e, i)} placeholder='Season No' className="admin-input" />
+                                                        <input name="eno" value={sande.eno} onChange={(e) => handleChange(e, i)} placeholder='Total Episodes' className="admin-input" /><br />
                                                     </Col>
                                                     <Col md={1}>
-                                                        <Button className='btn btn-danger' onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
+                                                        <Button className='btn btn-danger' style={{marginTop: "2%"}} onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
                                                     </Col>
                                                 </Row>
                                             </div>
