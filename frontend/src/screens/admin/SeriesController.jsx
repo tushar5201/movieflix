@@ -214,7 +214,7 @@ export function CreateSeries() {
                             <i className="fa fa-plus"></i>
                         </Button>
                         <br /><br />
-                    
+
                         <Button type='submit'>Create Series</Button>
 
                     </Form>
@@ -256,7 +256,11 @@ export function UpdateSeries() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-series', { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes }, { withCredentials: true });
+            const res = await fetch('https://movieflix-lyart.vercel.app/admin/update-series', {
+                method: "PUT",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes })
+            });
             if (res.status === 201) {
                 toast.success('Series updated successfully.');
                 navigate('/dashboard/series');
@@ -362,7 +366,7 @@ export function UpdateSeries() {
                                                         <input name="eno" value={sande.eno} onChange={(e) => handleChange(e, i)} placeholder='Total Episodes' className="admin-input" /><br />
                                                     </Col>
                                                     <Col md={1}>
-                                                        <Button className='btn btn-danger' style={{marginTop: "50px"}} onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
+                                                        <Button className='btn btn-danger' style={{ marginTop: "50px" }} onClick={() => handleDelete(sande._id, series._id)}><i className="fa-solid fa-trash"></i></Button>{' '}<br />
                                                     </Col>
                                                 </Row>
                                             </div>

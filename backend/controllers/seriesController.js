@@ -24,7 +24,8 @@ export const createSeries = async (req, res) => {
 export const updateSeries = async (req, res) => {
     try {
         let { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes } = req.body;
-        const sande = [{sno: null, eno: null}]
+        const sande = [{sno: null, eno: null}];
+        seasonsandepisodes = JSON.parse(seasonsandepisodes);
         const exist = await Series.findById(id);
         if (exist) {
             if (name === '') {
