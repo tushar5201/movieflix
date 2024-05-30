@@ -5,7 +5,7 @@ export const createSeries = async (req, res) => {
         const { tmdb, name, story, cast, director, release, image, distributor, rated, genre, imdb, year, category, sande1 } = req.body;
         const seasonsandepisodes = JSON.parse(sande1);
         // console.log(seasonsandepisodes);
-        const series = new Series({ tmdb, name, story, cast, director, image, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes }).save();
+        const series = await new Series({ tmdb, name, story, cast, director, image, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes }).save();
 
         res.status(200).send({
             success: true,
