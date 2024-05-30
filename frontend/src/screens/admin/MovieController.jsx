@@ -72,7 +72,7 @@ export default function MovieController() {
     }, [])
 
     const handleDelete = async (id) => {
-        const res = await fetch('/admin/delete-movie', {
+        const res = await fetch('https://movieflix-lyart.vercel.app/admin/delete-movie', {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ id })
@@ -248,9 +248,9 @@ export function CreateMovie() {
 export function UpdateMovie() {
 
     const [{ loading, error, movies }, dispatch] = useReducer((reducer), {
-        movies: [],
         loading: true,
-        error: ""
+        error: "",
+        movies: []
     })
 
     const navigate = useNavigate();

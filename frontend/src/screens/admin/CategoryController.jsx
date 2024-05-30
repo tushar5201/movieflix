@@ -114,7 +114,7 @@ export function CreateCategory () {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/admin/create-category', {name});
+            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-category', {name});
             if (res.status === 200) {
                 toast.success('Category added successfully.')
                 navigate('/dashboard/categories')
