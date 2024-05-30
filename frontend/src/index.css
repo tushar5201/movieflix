@@ -401,6 +401,8 @@ th {
   position: relative;
   width: 80px;
   height: 80px;
+  left: 50%;
+  top: 35%;
 }
 
 .lds-hourglass:after {
