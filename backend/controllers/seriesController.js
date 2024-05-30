@@ -21,7 +21,7 @@ export const createSeries = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status().send({
+        return res.status(401).send({
             success: false,
             message: 'Err in creating series'
         })
