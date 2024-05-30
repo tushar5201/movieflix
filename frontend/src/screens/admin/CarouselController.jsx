@@ -125,7 +125,7 @@ export const CreateCarousel = () => {
             carouselData.append('story', story);
             carouselData.append('link', link);
 
-            const res = await axios.post('/admin/create-carousel', carouselData);
+            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-carousel', carouselData);
             if (res.status === 201) {
                 toast.success('Carousel Added Successfully')
                 navigate('/dashboard/carousel')
@@ -166,8 +166,8 @@ export const CreateCarousel = () => {
 export const UpdateCarousel = () => {
     const [{ loading, error, carousel }, dispatch] = useReducer(reducer, {
         loading: true,
-        carousel: [],
-        error: ""
+        error: "",
+        carousel: []
     })
 
     const [image, setImage] = useState('');
@@ -181,7 +181,7 @@ export const UpdateCarousel = () => {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
             try {
-                const carousel = await axios.get('/api/carousel');
+                const carousel = await axios.get('https://movieflix-lyart.vercel.app/api/carousel');
                 dispatch({ type: 'FETCH_SUCCESS', payload: carousel.data })
             } catch (error) {
                 dispatch({ type: 'FETCH_FAIL', payload: error.message })
@@ -199,7 +199,7 @@ export const UpdateCarousel = () => {
             carouselData.append('link', link);
             carouselData.append('id', id);
 
-            const res = await axios.put('/admin/update-carousel', carouselData)
+            const res = await axios.put('https://movieflix-lyart.vercel.app/admin/update-carousel', carouselData)
             if (res.status === 200) {
                 toast.success('Carousel updated successfully.')
                 navigate('/dashboard/carousel')
