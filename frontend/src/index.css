@@ -411,8 +411,8 @@ th {
   height: 0;
   margin: 8px;
   box-sizing: border-box;
-  border: 32px solid currentColor;
-  border-color: currentColor transparent currentColor transparent;
+  border: 32px solid #E50914;
+  border-color: #E50914 transparent #E50914 transparent;
   animation: lds-hourglass 1.2s infinite;
 }
 
