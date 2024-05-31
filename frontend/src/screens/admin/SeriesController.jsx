@@ -44,14 +44,18 @@ export default function SeriesController() {
     const navigate = useNavigate();
 
     const handleDelete = async (id) => {
-        const res = await axios.delete("https://movieflix-lyart.vercel.app/admin/delete-series", { id }, { withCredentials: true });
-        if (res.status === 200) {
-            toast.success("Series Deleted Successfully");
-            window.location.reload();
-        } else if (res.status === 401) {
-            toast.error("Couldn't be deleted");
-        } else if (res.status === 404) {
-            toast.error("Series not found");
+        try {
+            const res = await axios.delete("https://movieflix-lyart.vercel.app/admin/delete-series", { id }, { withCredentials: true });
+            if (res.status === 200) {
+                toast.success("Series Deleted Successfully");
+                window.location.reload();
+            } else if (res.status === 401) {
+                toast.error("Couldn't be deleted");
+            } else if (res.status === 404) {
+                toast.error("Series not found");
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 
