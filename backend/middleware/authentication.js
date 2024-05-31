@@ -15,7 +15,7 @@ const authentication = async (req, res, next) => {
                 return res.sendStatus(401)
             }
         } else {
-            return res.sendStatus(403);
+            return res.sendStatus(405);
         }
     } catch (err) {
         console.log(err);
