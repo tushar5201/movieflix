@@ -41,6 +41,18 @@ export default function SeriesController() {
         series: []
     });
 
+    const handleDelete = async (id) => {
+        const res = await axios.delete("https://movieflix-lyart.vercel.app/admin/delete-series", {id});
+        if(res.status === 200) {
+            toast.success("Series Deleted Successfully");
+            window.location.reload();
+        } else if(res.status === 401) {
+            toast.error("Couldn't be deleted");
+        } else if (res.status === 404) {
+            toast.error("Series not found");
+        }
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             dispatch({ type: 'FETCH_REQUEST' });
@@ -52,7 +64,7 @@ export default function SeriesController() {
             }
         }
         fetchData();
-    }, [])
+    }, []);
     return (
         <div className="container">
             <Row className="container-fluid">
@@ -75,7 +87,7 @@ export default function SeriesController() {
                                                 </td>
                                                 <td style={{ textAlign: 'right' }}>
                                                     <Link to={`/dashboard/update_series/${ser._id}`} className="btn btn-primary"><i className="fa-solid fa-pen"></i></Link> {' '}
-                                                    <Button className="btn btn-danger"><i className="fa-solid fa-trash"></i></Button>
+                                                    <Button onClick={() => handleDelete(ser._id)} className="btn btn-danger"><i className="fa-solid fa-trash"></i></Button>
                                                 </td>
                                             </tr>
                                         </tbody>
