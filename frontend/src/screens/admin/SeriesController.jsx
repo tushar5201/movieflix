@@ -346,7 +346,7 @@ export function UpdateSeries() {
                                     <input type="text" name='rated' defaultValue={series.rated} className='admin-input' placeholder='Rated' onChange={(e) => setRated(e.target.value)} /><br />
                                     <input type="text" name='genre' defaultValue={series.genre} className='admin-input' placeholder='Genre' onChange={(e) => setGenre(e.target.value)} /><br />
                                     <input type="text" name='imdb' defaultValue={series.imdb} className='admin-input' placeholder='Imdb' onChange={(e) => setImdb(e.target.value)} /><br />
-                                    <input type="text" name='year' defaultValue={series.year} className='admin-input' placeholder='Year' onChange={(e) => setYear(e.target.value)} /><br />
+                                    <input type="number" name='year' defaultValue={series.year} className='admin-input' placeholder='Year' onChange={(e) => setYear(e.target.value)} /><br />
                                     <input type="text" name='tmdb' defaultValue={series.tmdb} className='admin-input' placeholder='TMDB' onChange={(e) => setTmdb(e.target.value)} /><br />
 
                                     <select onChange={(e) => setCategory(e.target.selectedOptions[0].innerText)} className='admin-input'>
