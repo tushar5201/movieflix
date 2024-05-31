@@ -109,7 +109,7 @@ export const updateSeries = async (req, res) => {
 //     }
 // }
 
-export const deleteSeries = async () => {
+export const deleteSeries = async (req, res) => {
     try {
         const {id} = req.body;
         const series = await Series.findById(id);
