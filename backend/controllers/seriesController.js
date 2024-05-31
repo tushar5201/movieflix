@@ -111,7 +111,7 @@ export const updateSeries = async (req, res) => {
 
 export const deleteSeries = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.body.id;
         const series = await Series.findById(id);
         if (series) {
             const del = await Series.findByIdAndDelete(id);
