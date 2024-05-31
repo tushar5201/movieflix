@@ -256,11 +256,13 @@ export function UpdateSeries() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('https://movieflix-lyart.vercel.app/admin/update-series', {
-                method: "PUT",
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes })
-            });
+            // const res = await fetch('https://movieflix-lyart.vercel.app/admin/update-series', {
+            //     method: "PUT",
+            //     headers: { 'content-type': 'application/json' },
+            //     body: JSON.stringify({ id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes })
+            // });
+
+            const res = await axios.put("https://movieflix-lyart.vercel.app/admin/update-series", { id, tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, seasonsandepisodes })
             if (res.status === 201) {
                 toast.success('Series updated successfully.');
                 navigate('/dashboard/series');
