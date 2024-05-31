@@ -15,7 +15,7 @@ import path from 'path'
 import { createMovie, deleteMovie, updateMovie } from "./controllers/movieController.js";
 import { createCategory, deleteCategory } from "./controllers/caetgoryController.js";
 import Category from "./models/categoryModel.js";
-import { createSeries, updateSeries } from "./controllers/seriesController.js";
+import { createSeries, deleteSeries, updateSeries } from "./controllers/seriesController.js";
 import Series from "./models/seriesModel.js";
 import cors from "cors";
 import jwt from 'jsonwebtoken';
