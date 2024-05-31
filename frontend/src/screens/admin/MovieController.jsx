@@ -48,6 +48,9 @@ export default function MovieController() {
             if (!res.status === 200) {
                 const err = new Error(res.err)
                 throw err;
+            } else {
+                navigate('/infosoft_sign_in')
+                alert('Unauthorized User')
             }
         } catch (err) {
             console.log(err);
@@ -175,6 +178,25 @@ export function CreateMovie() {
             console.log(error);
         }
     }
+
+    const callAdminPage = async (req, res) => {
+        try {
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { withCredentials: true });
+            if (!res.status === 200) {
+                const err = new Error(res.err)
+                throw err;
+            } else {
+                navigate('/infosoft_sign_in')
+                alert('Unauthorized User')
+            }
+        } catch (err) {
+            console.log(err);
+            navigate('/signin')
+        }
+    }
+    useEffect(() => {
+        callAdminPage();
+    })
 
     const [{ categories }, dispatch1] = useReducer((reducer1), {
         categories: []
@@ -306,6 +328,25 @@ export function UpdateMovie() {
             console.log(error);
         }
     }
+
+    const callAdminPage = async (req, res) => {
+        try {
+            const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { withCredentials: true });
+            if (!res.status === 200) {
+                const err = new Error(res.err)
+                throw err;
+            } else {
+                navigate('/infosoft_sign_in')
+                alert('Unauthorized User')
+            }
+        } catch (err) {
+            console.log(err);
+            navigate('/signin')
+        }
+    }
+    useEffect(() => {
+        callAdminPage();
+    })
 
     const [{ categories }, dispatch1] = useReducer((reducer1), {
         categories: []
