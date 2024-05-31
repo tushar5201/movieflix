@@ -124,6 +124,6 @@ export const deleteSeries = async (req, res) => {
             res.status(404).send("Series not found");
         }
     } catch (error) {
-        console.log(error);
+        res.status(502).send("anonymous")
     }
 }
