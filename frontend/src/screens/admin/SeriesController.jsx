@@ -62,7 +62,7 @@ export default function SeriesController() {
                 const err = new Error(res.err)
                 throw err;
             } else {
-                navigate('/infosoft_sign_in')
+                navigate('/signin')
                 alert('Unauthorized User')
             }
         } catch (err) {
@@ -156,7 +156,7 @@ export function CreateSeries() {
                 const err = new Error(res.err)
                 throw err;
             } else {
-                navigate('/infosoft_sign_in')
+                navigate('/signin')
                 alert('Unauthorized User')
             }
         } catch (err) {
@@ -361,7 +361,7 @@ export function UpdateSeries() {
                 const err = new Error(res.err)
                 throw err;
             } else {
-                navigate('/infosoft_sign_in')
+                navigate('/signin')
                 alert('Unauthorized User')
             }
         } catch (err) {

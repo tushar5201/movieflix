@@ -49,7 +49,7 @@ export default function MovieController() {
                 const err = new Error(res.err)
                 throw err;
             } else {
-                navigate('/infosoft_sign_in')
+                navigate('/signin')
                 alert('Unauthorized User')
             }
         } catch (err) {
@@ -186,7 +186,7 @@ export function CreateMovie() {
                 const err = new Error(res.err)
                 throw err;
             } else {
-                navigate('/infosoft_sign_in')
+                navigate('/signin')
                 alert('Unauthorized User')
             }
         } catch (err) {
@@ -336,7 +336,7 @@ export function UpdateMovie() {
                 const err = new Error(res.err)
                 throw err;
             } else {
-                navigate('/infosoft_sign_in')
+                navigate('/signin')
                 alert('Unauthorized User')
             }
         } catch (err) {
