@@ -111,7 +111,7 @@ export const updateSeries = async (req, res) => {
 
 export const deleteSeries = async (req, res) => {
     try {
-        const id = req.body;
+        const { id } = req.body;
         const series = await Series.findById(id);
         if (series) {
             const del = await Series.findByIdAndDelete(id);
@@ -124,6 +124,6 @@ export const deleteSeries = async (req, res) => {
             res.status(404).send("Series not found");
         }
     } catch (error) {
-
+        console.log(error);
     }
 }
