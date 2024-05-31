@@ -87,7 +87,7 @@ export default function SeriesController() {
                                                 </td>
                                                 <td style={{ textAlign: 'right' }}>
                                                     <Link to={`/dashboard/update_series/${ser._id}`} className="btn btn-primary"><i className="fa-solid fa-pen"></i></Link> {' '}
-                                                    <Button onClick={() => handleDelete(ser._id)} className="btn btn-danger"><i className="fa-solid fa-trash"></i></Button>
+                                                    <Button onClick={handleDelete(ser._id)} className="btn btn-danger"><i className="fa-solid fa-trash"></i></Button>
                                                 </td>
                                             </tr>
                                         </tbody>
