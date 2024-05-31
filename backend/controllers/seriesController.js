@@ -111,11 +111,11 @@ export const updateSeries = async (req, res) => {
 
 export const deleteSeries = async (req, res) => {
     try {
-        const {id} = req.body;
+        const id = req.body;
         const series = await Series.findById(id);
-        if(series) {
+        if (series) {
             const del = await Series.findByIdAndDelete(id);
-            if(del) {
+            if (del) {
                 res.status(200).send("Deleted Successfully");
             } else {
                 res.status(401).send("Couldn't be deleted");
@@ -124,6 +124,6 @@ export const deleteSeries = async (req, res) => {
             res.status(404).send("Series not found");
         }
     } catch (error) {
-        
+
     }
 }
