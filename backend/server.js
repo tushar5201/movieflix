@@ -19,10 +19,13 @@ import { createSeries, deleteSeries, updateSeries } from "./controllers/seriesCo
 import Series from "./models/seriesModel.js";
 import cors from "cors";
 import jwt from 'jsonwebtoken';
+import bodyParser from "body-parser";
 
 const app = express();
 app.use(express.json())
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use(cors(
     {
