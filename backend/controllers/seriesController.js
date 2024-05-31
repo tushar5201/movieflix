@@ -71,11 +71,18 @@ export const updateSeries = async (req, res) => {
             }
             const series = await Series.findByIdAndUpdate(id, { tmdb, name, image, story, cast, director, release, distributor, rated, genre, imdb, year, category, $push: { seasonsandepisodes } });
 
-            res.status(201).send({
-                success: true,
-                message: 'series updated.',
-                series
-            });
+            if (series) {
+                res.status(201).send({
+                    success: true,
+                    message: 'series updated.',
+                    series
+                });
+            } else {
+                res.status(407).send({
+                    success: false,
+                    message: "failed"
+                })
+            }
         } else {
             res.status(405).send({
                 success: false,
