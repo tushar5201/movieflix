@@ -3,8 +3,8 @@ import fs from 'fs';
 
 export const createMovie = async (req, res) => {
     try {
-        const { name, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
-        const movie = new Movies({ name, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
+        const { name, image, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
+        const movie = new Movies({ name, image, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
 
         // if (req.file) {
         //     movie.image.data = fs.readFileSync(req.file.path);
