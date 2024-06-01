@@ -91,6 +91,17 @@ export default function IndexScreen() {
             autoplay: true,
             autoplaySpeed: 2000,
         }
+    } else if (width < 990 && width > 450) {
+        settings = {
+            className: "center",
+            infinite: true,
+            centerPadding: '100px',
+            slidesToShow: 4,
+            swipeToSlide: true,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        }
     } else {
         settings = {
             className: "center",

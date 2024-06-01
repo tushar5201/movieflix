@@ -212,7 +212,7 @@ app.get('/admin', authentication, (req, res) => {
 app.get("/logout", (req, res) => {
     try {
         return res
-            .clearCookie("jwtToken", { httpOnly: false, sameSite: "none", secure: true })
+            .clearCookie("jwtToken")
             .status(200)
             .send("successfully logout")
     } catch (error) {
