@@ -136,7 +136,7 @@ export function CreateMovie() {
     const [genre, setGenre] = useState('');
     const [imdb, setImdb] = useState('');
     const [year, setYear] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('Bollywood');
     const [tmdb, setTmdb] = useState('');
 
     const [uploaded, setUploaded] = useState()
