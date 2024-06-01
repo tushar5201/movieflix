@@ -28,10 +28,10 @@ export default function AdminView() {
             const res = await axios.get('https://movieflix-lyart.vercel.app/admin', { withCredentials: true });
             const data = await res.data;
             setUserData(data);
-            if (!res.status === 200) {
-                const err = new Error(res.err)
-                throw err;
-            }
+            // if (!res.status === 200) {
+            //     const err = new Error(res.err)
+            //     throw err;
+            // }
         } catch (err) {
             console.log(err);
             navigate('/signin')
