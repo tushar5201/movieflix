@@ -231,7 +231,7 @@ app.put('/admin/update-carousel', authentication, updateCarousel);
 // Movie Route
 // app.post('/admin/create-movie', uploadGrid.fields([{name: 'image', maxCount:1},{name: 'video', maxCount: 1}]), authentication, createMovie);
 app.post('/admin/create-movie', authentication, createMovie);
-app.delete('/admin/delete-movie', authentication, deleteMovie);
+app.delete('/admin/delete-movie', deleteMovie);
 // app.get('/admin/get-movie-image/:imgid', movieImageController);
 app.put('/admin/update-movie', authentication, updateMovie);
 
