@@ -45,7 +45,13 @@ export default function SeriesController() {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete("https://movieflix-lyart.vercel.app/admin/delete-series", JSON.stringify({ id }));
+            // const res = await axios.delete("https://movieflix-lyart.vercel.app/admin/delete-series", JSON.stringify({ id }));
+            const res = await fetch('https://movieflix-lyart.vercel.app/admin/delete-series', {
+                method: 'DELETE',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ id })
+            })
+
             if (res.status === 200) {
                 toast.success("Series Deleted Successfully");
                 window.location.reload();
