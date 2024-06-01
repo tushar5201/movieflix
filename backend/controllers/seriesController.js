@@ -112,9 +112,10 @@ export const updateSeries = async (req, res) => {
 export const deleteSeries = async (req, res) => {
     try {
         const { id } = req.body;
-        const series = await Series.findById({ id });
+        console.log(id);
+        const series = await Series.findById(id);
         if (series) {
-            const del = await Series.findByIdAndDelete({ id });
+            const del = await Series.findByIdAndDelete(id);
             if (del) {
                 res.status(200).send("Deleted Successfully");
             } else {
