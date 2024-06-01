@@ -48,7 +48,7 @@ export default function MovieController() {
             if (!res.status === 200) {
                 navigate('/signin')
                 alert('Unauthorized User')
-            } 
+            }
         } catch (err) {
             console.log(err);
             navigate('/signin')
@@ -160,11 +160,7 @@ export function CreateMovie() {
             movieData.append('year', year);
             movieData.append('category', category);
 
-            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-movie', movieData, {
-                onUploadProgress: (data) => {
-                    setUploaded(Math.round((data.loaded / data.total) * 100))
-                }
-            });
+            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-movie', movieData, { withCredentials: true });
             if (res.status === 200) {
                 toast.success('Movie added successfully.')
                 navigate('/dashboard/movies')
@@ -326,7 +322,7 @@ export function UpdateMovie() {
             if (!res.status === 200) {
                 navigate('/signin')
                 alert('Unauthorized User')
-            } 
+            }
         } catch (err) {
             console.log(err);
             navigate('/signin')
