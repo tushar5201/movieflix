@@ -144,23 +144,7 @@ export function CreateMovie() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const movieData = new FormData();
-            movieData.append('tmdb', tmdb);
-            movieData.append('name', name);
-            movieData.append('image', image);
-            movieData.append('story', story);
-            movieData.append('cast', cast);
-            movieData.append('director', director);
-            movieData.append('release', release);
-            movieData.append('distributor', distributor);
-            movieData.append('rated', rated);
-            movieData.append('duration', duration);
-            movieData.append('genre', genre);
-            movieData.append('imdb', imdb);
-            movieData.append('year', year);
-            movieData.append('category', category);
-
-            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-movie', movieData, { withCredentials: true });
+            const res = await axios.post('https://movieflix-lyart.vercel.app/admin/create-movie', { name, image, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb }, { withCredentials: true });
             if (res.status === 200) {
                 toast.success('Movie added successfully.')
                 navigate('/dashboard/movies')
