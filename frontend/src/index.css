@@ -445,6 +445,13 @@ th {
   .dropdown-menu {
     margin-left: 0;
   }
+
+  .slider_img {
+    margin-left: -20px;
+    width: 100px;
+    height: 140px;
+    padding: 1.5rem;
+  }
 }
 
 /* End Tab Screen */
