@@ -3,8 +3,8 @@ import fs from 'fs';
 
 export const createMovie = async (req, res) => {
     try {
-        const { name, slug, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
-        const movie = new Movies({ name, slug, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
+        const { name, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
+        const movie = new Movies({ name, story, cast, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb })
 
         // if (req.file) {
         //     movie.image.data = fs.readFileSync(req.file.path);
@@ -61,7 +61,7 @@ export const deleteMovie = async (req, res) => {
 
 export const updateMovie = async (req, res) => {
     try {
-        let { id, name, slug, story, cast, image, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
+        let { id, name, story, cast, image, release, director, distributor, rated, duration, genre, imdb, year, category, tmdb } = req.body;
         // const image = req.file;
         const exist = await Movies.findById(id);
         if (exist) {
@@ -73,9 +73,6 @@ export const updateMovie = async (req, res) => {
             }
             if (story === '') {
                 story = exist.story
-            }
-            if (slug === '') {
-                slug = exist.slug
             }
             if (cast === '') {
                 cast = exist.cast

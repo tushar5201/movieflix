@@ -126,7 +126,6 @@ export function CreateMovie() {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
-    const [slug, setSlug] = useState('');
     const [story, setStory] = useState('');
     const [cast, setCast] = useState('');
     const [director, setDirector] = useState('');
@@ -149,7 +148,6 @@ export function CreateMovie() {
             movieData.append('tmdb', tmdb);
             movieData.append('name', name);
             movieData.append('image', image);
-            movieData.append('slug', slug);
             movieData.append('story', story);
             movieData.append('cast', cast);
             movieData.append('director', director);
@@ -226,7 +224,6 @@ export function CreateMovie() {
                                 <img src={URL.createObjectURL(image)} alt='carousel' height={'200px'} />
                             </div>
                         )} */}
-                        <input type="text" name='slug' value={slug} className='admin-input' placeholder='Slug' onChange={(e) => setSlug(e.target.value)} /><br />
                         <input type="text" name='story' value={story} className='admin-input' placeholder='Story' onChange={(e) => setStory(e.target.value)} /><br />
                         <input type="text" name='cast' value={cast} className='admin-input' placeholder='Cast' onChange={(e) => setCast(e.target.value)} /><br />
                         <input type="text" name='director' value={director} className='admin-input' placeholder='Director' onChange={(e) => setDirector(e.target.value)} /><br />
