@@ -160,7 +160,7 @@ app.post("/sign_in", async (req, res) => {
         if (bcrypt.compareSync(password, user.password)) {
             const jwtToken = jwt.sign({ email: user.email }, process.env.SECRET_KEY);
             return res
-                .cookie("jwtToken", jwtToken, { httpOnly: false, sameSite: "none", secure: true, domain: "https://movieflix-zzmw.vercel.app/", expires: new Date(Date.now() + 25892000000) })
+                .cookie("jwtToken", jwtToken, { httpOnly: false, sameSite: "none", secure: true, expires: new Date(Date.now() + 25892000000) })
                 .status(200)
                 .send({ email: user.email, isAdmin: user.isAdmin, name: user.name });
         } else {
