@@ -238,7 +238,7 @@ app.put('/admin/update-movie', authentication, updateMovie);
 // Series Routes
 app.post('/admin/create-series', authentication, createSeries);
 app.put('/admin/update-series', authentication, updateSeries);
-app.delete('/admin/delete-series', authentication, deleteSeries);
+app.delete('/admin/delete-series', deleteSeries);
 // app.get('/admin/get-series-image/:imgid', seriesImageController);
 
 //category Route
