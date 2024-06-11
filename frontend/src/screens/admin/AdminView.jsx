@@ -43,6 +43,10 @@ export default function AdminView() {
 
     return (
         <div className='container'>
+            <div>
+                <p><Link to='/signup'>Create Account</Link></p>
+                <p onClick={logoutHandler} style={{color: "white", cursor: "pointer"}}>Logout</p>
+            </div>
             <Row className='container-fluid'>
                 <Col md={3}>
                     <AdminMenu />
