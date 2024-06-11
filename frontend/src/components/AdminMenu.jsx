@@ -15,7 +15,7 @@ export default function AdminMenu() {
       </div> */}
       <div className="d-flex flex-column flex-shrink-0 bg-light" style={{ width: "4.5rem" }}>
         <Link href="/" className="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-          <svg className="bi" width="40" height="32"></svg>
+          <i className="fa-solid fa-film"></i>
           <span className="visually-hidden">Icon-only</span>
         </Link>
         <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
