@@ -245,6 +245,6 @@ app.delete('/admin/delete-series', deleteSeries);
 app.post('/admin/create-category', authentication, createCategory);
 app.delete('/admin/delete-category', authentication, deleteCategory);
 
-app.listen(6000, () => {
-    console.log('serve at http://localhost:6000');
+app.listen(5000, () => {
+    console.log('serve at http://localhost:5000');
 })
